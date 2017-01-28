@@ -85,14 +85,10 @@ app.controller("floatingMenuCtrl", function($scope) {
             success: function(user) {
                 var isCustomer = user.get('type') == 'CUSTOMER';
                 var isApproved = user.get('status') == 'APPROVED';
+                var isEmailVerified = user.get('emailVerified');
 
                 if (isCustomer && isApproved) {
                     notification('Login success', 'success');
-                    //$scope.activeUser = Parse.User.current();
-                    //$scope.$apply();
-                    //
-                    //UIkit.modal('#userlogin').hide();
-
                     location.reload();
                 } else {
                     Parse.User.logOut().then(function() {
@@ -100,6 +96,8 @@ app.controller("floatingMenuCtrl", function($scope) {
                             notification('Your account is unauthorized', 'danger', 5000);
                         else if (!isApproved)
                             notification('Your account is not yet approved', 'danger', 5000);
+                        else if (!isEmailVerified)
+                            notification('Your email is not yet verified', 'danger', 5000);
 
                         $scope.loader.isLoggingIn = false;
                         $scope.$apply();
