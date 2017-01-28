@@ -87,7 +87,7 @@ app.controller("floatingMenuCtrl", function($scope) {
                 var isApproved = user.get('status') == 'APPROVED';
                 var isEmailVerified = user.get('emailVerified');
 
-                if (isCustomer && isApproved) {
+                if (isCustomer && isApproved && isEmailVerified) {
                     notification('Login success', 'success');
                     location.reload();
                 } else {
