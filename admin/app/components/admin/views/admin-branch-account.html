@@ -1,0 +1,83 @@
+<admin-sidebar></admin-sidebar>
+
+<div class="content">
+
+    <div class="mgnt-navigation-menu">
+        <admin-top></admin-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-panel ">
+            <div class="uk-width-1-1 uk-panel">
+                <div class="uk-width-1-1 uk-panel uk-align-center uk-margin-bottom-remove">
+                    <div class="uk-width-1-1 uk-form-horizontal">
+                        <div class="uk-form-row ">
+                            <div class="uk-grid uk-grid-collapse uk-grid-large ">
+                                <h2 class="uk-width-5-10  uk-margin-small-top  uk-text-bold">Branch Account Management</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="uk-width-1-1">
+                <div class="uk-width-1-1 uk-panel uk-margin-bottom">
+                    <form ng-submit="save()" role="login">
+                        <div class="uk-width-1-1" >
+                            <div>
+                                <label class="uk-text-bold">Branch Name:
+                                    <select required id="select-branch" ng-model="selectedBranchId" ng-change="selectedBranchChanged()" ng-disabled="loader.isSaving" class="public-select uk-margin-bottom">
+                                        <option ng-if="!selectedBranchId" value="" disabled>SELECT A BRANCH</option>
+                                        <option ng-repeat="data in branches" value="{{data.id}}" ng-selected="data.id == selectedBranchId">{{data.get('name')}}</option>
+                                    </select></label>
+                            </div>
+                        </div>
+
+                        <div class="uk-width-large-6-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center">
+                            <div class="uk-margin-top ">
+                                <div class="uk-width-large-6-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center " >
+
+                                    <label class="uk-text-bold">Username:
+                                        <input required ng-model="data.username" disabled type="text" disabled class="uk-width-1-1 uk-text-bold uk-margin-bottom" /></label>
+                                    <label class="uk-text-bold">New Password:
+                                        <input required ng-model="data.newPassword" ng-disabled="loader.isSaving" type="password" class="uk-width-1-1 uk-text-bold uk-margin-bottom"/></label>
+                                    <label class="uk-text-bold">Re-Type New Password:
+                                        <input required ng-model="data.retypePassword" ng-disabled="loader.isSaving" type="password" class="uk-width-1-1 uk-text-bold uk-margin-bottom"/></label>
+
+                                    <button ng-disabled="loader.isSaving" type="submit" class="uk-align-center uk-margin-large-top button-green button-box ">
+                                        <span ng-if="loader.isSaving"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+                                        <span class="text-white" ng-if="!loader.isSaving">SAVE</span>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="admnpass" class=" uk-modal ">
+    <div class="uk-modal-dialog admnreq uk-container-center">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top "> Admin Password Required</h2>
+        <div class="uk-width-large-6-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center" role="login">
+            <div class=" ">
+                <label class="uk-text-bold">Password:
+                    <input ng-model="adminPassword" ng-keypress="submitEnter($event, saveNext)" ng-disabled="loader.isSaving" type="password" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+        </div>
+        <button ng-click="saveNext()" ng-disabled="loader.isSaving" class=" button-green uk-margin-large-top uk-align-center">
+            <span ng-if="loader.isSaving"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+            <span ng-if="!loader.isSaving">SUBMIT</span>
+        </button>
+    </div>
+</div>
+
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>

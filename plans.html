@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title property="og:title" content="CignalCable">Cignal Cable TV</title>
+    <link rel="icon" type="image/png" href="assets/image/Cignal_Logo.png" />
+    <link rel="stylesheet" href="assets/css/website.css"/>
+    <link rel="stylesheet" href="assets/uikit-2.24.2/css/uikit.almost-flat.min.css"/>
+    <link rel="stylesheet" href="assets/uikit-2.24.2/css/uikit.min.css"/>
+    <link rel="stylesheet" href="assets/fonts/lato/lato.css"/>
+    <script>window.jQuery || document.write('<script  src="assets/uikit-2.24.2/js/jquery-1.10.2.min.js"><\/script>')</script>
+</head>
+<body ng-controller="planCtrl">
+<div class="uk-width-1-1 uk-panel uk-hidden-large uk-hidden-medium nav-mobile" data-uk-sticky>
+    <div class="uk-width-9-10 uk-container-center">
+        <div class=" uk-grid uk-grid-collapse uk-grid-width-1-2">
+            <div class="  ">
+                <div class="uk-width-1-1 uk-panel  uk-flex uk-flex-middle">
+                    <a href="#top" data-uk-smooth-scroll><img src="assets/image/Cignal_Logo.png" alt="Cignal Cable" class=" "/></a>
+                </div>
+
+            </div>
+            <div class=" " >
+                <div class="uk-width-1-1 uk-panel uk-flex uk-flex-middle uk-flex-right ">
+                    <ul class="uk-text-right">
+                        <li><a href="#offcanvas" data-uk-offcanvas><i class="uk-icon-bars"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div id="offcanvas" class="uk-offcanvas">
+
+    <div class="uk-offcanvas-bar uk-offcanvas-bar-flip" style="background-color: #781819;">
+
+        <ul class="uk-nav uk-nav-offcanvas " >
+            <li>
+                <div class="uk-width-1-1 uk-container uk-container-center uk-margin-bottom-remove">
+                    <div class="uk-width-1-1 uk-panel uk-flex uk-flex-middle">
+                        <a href="#top" data-uk-smooth-scroll><img src="assets/image/Cignal_Logo.png" width="189" height="100" alt="Cignal Cable" class=" "/></a>
+                    </div>
+                </div>
+
+            </li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="channels.html">Channels</a></li>
+            <li class="uk-active"><a href="plans.html">Cignal Plans</a></li>
+            <li><a href="promos.html">Events and Promos</a></li>
+            <li><a href="user-reservation.html">Online Reservation</a></li>
+            <li><a href="user-support.html">Customer Support</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+
+    </div>
+
+</div>
+
+<div class="navigation-wrapper uk-height-viewport uk-hidden-small">
+    <a href="#top"><img src="assets/image/Cignal_Logo.png" alt="Cignal" class="uk-align-center uk-margin-large-bottom uk-margin-small-top"/></a>
+    <div class="uk-width-1-1 uk-panel nav-menu">
+        <ul class="uk-text-left">
+            <li><a href="index.html">home</a></li>
+            <li><a href="channels.html">Channels</a></li>
+            <li class="uk-active"><a href="plans.html">cignal plans</a></li>
+            <li><a href="promos.html">events and promos</a></li>
+            <li><a href="user-reservation.html">online reservation</a></li>
+            <li><a href="user-support.html">customer support</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+    </div>
+</div>
+<div class="content">
+    <div id="plans-accordion" class="uk-accordion">
+
+        <!--START PLANS TEMPLATE-->
+        <div ng-repeat="a in plans" class="uk-width-1-1" ng-cloak>
+            <h2 class=" uk-text-center text-black back-red uk-accordion-title" id="postpaid"><span class="uk-text-bold">{{a[0].get('plan').toUpperCase()}}S</span> <span class="uk-icon text-black uk-icon-caret-down uk-icon-small"></span></h2>
+            <div class="uk-grid uk-accordion-content uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-width-small-1-2" data-uk-grid-margin>
+
+                <!--START CHANNEL IMAGES-->
+                <div ng-repeat="b in a" class="uk-width-large-1-4 uk-width-medium-1-2 uk-width-small-1-2 ">
+                    <a ng-click="showLargeImage(b.get('imageLarge')._url, b.get('image')._url)" title="{{b.get('name')}}">
+                        <img ng-src="{{b.get('image')._url}}" alt="{{b.get('name') + ' logo'}}" class="uk-align-center ">
+                    </a>
+                </div>
+                <!--END CHANNEL IMAGES-->
+
+            </div>
+        </div>
+        <!--END PLANS TEMPLATE-->
+
+    </div>
+    <div class="uk-width-1-1 footer">
+        <ul class="uk-padding-remove uk-text-center ">
+            <li><a href="terms.html">Terms of use</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="">Other Services Offered</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+        </ul>
+        <h4 class="uk-text-center">&copy; 2016 Uplink Digital Solutions Enterprise. All rights reserved.</h4>
+    </div>
+</div>
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/lightbox.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/accordion.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/sticky.min.js"></script>
+<script src="assets/js/website.js"></script>
+
+<script src="admin/libs/angular-1.4.3.js"></script>
+<script src="admin/libs/parse-1.6.14.js"></script>
+<script src="assets/js/websitejs/plan.js"></script>
+
+</body>
+</html>

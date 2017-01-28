@@ -1,0 +1,422 @@
+html,body,div,h1,h2,h3,h4,h5,h6,a,p,input,textarea,label,li,select,option{
+    font-family: Lato,sans-serif;
+    color: #636363;
+}
+
+
+
+/*UTILITIES*/
+.text-red{
+    color: #ce020f!important;
+}
+.text-black{
+    color: #000000!important;
+}
+.text-blue{
+    color: #17267b !important;
+}
+.text-white{
+    color: #ffffff !important;
+}
+.back-red{
+    border-radius: 5px;
+    border: 2px solid #961004;
+    padding: 5px;
+    background-color: #fff;
+}
+.back-white{
+    background-color: #fff!important;
+}
+/*FLOATING-MENU*/
+.floating-menu {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding: 15px 10px;
+    width: auto;
+    height: auto;
+    background-image: url("../image/background-tile.png");
+    background-repeat: repeat;
+    z-index: 1080;
+}
+
+.floating-menu .social-links > li > a:hover {
+    color: #ff8d22;
+    -webkit-transition: ease 0.2s;
+    -moz-transition: ease 0.2s;
+    -ms-transition: ease 0.2s;
+    -o-transition: ease 0.2s;
+    transition: ease 0.2s;
+}
+
+.floating-menu .social-links > li > a {
+    font-size: 14px;
+    -webkit-transition: ease 0.2s;
+    -moz-transition: ease 0.2s;
+    -ms-transition: ease 0.2s;
+    -o-transition: ease 0.2s;
+    transition: ease 0.2s;
+}
+.social-links {
+    padding: 0;
+    list-style: none;
+}
+
+.social-links > li {
+    display: inline;
+    padding: 10px;
+    /*border-right: 1px solid #fff;*/
+}
+
+.social-links > li:first-child {
+    padding-top: 0;
+}
+
+.social-links > li:last-child {
+    border-bottom: none;
+}
+
+.social-links > li > a {
+    font-size: 18px;
+    color: #fff;
+    -webkit-transition: ease 0.2s;
+    -moz-transition: ease 0.2s;
+    -ms-transition: ease 0.2s;
+    -o-transition: ease 0.2s;
+    transition: ease 0.2s;
+}
+
+/*SIDEBAR*/
+.navigation-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 270px;
+    background-image: url("../image/background-tile.png");
+    background-repeat: repeat;
+    box-sizing: border-box;
+    padding: 15px;
+    text-transform: uppercase;
+}
+.navigation-wrapper>a>img{
+    width: 180px;
+}
+.nav-menu>ul>li{
+    list-style: none;
+    padding-top: 20px;
+}
+.nav-menu>ul>li>a{
+    color: #ffffff;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight:bold;
+}
+.nav-menu>ul>li>a:hover, .nav-menu>ul>li>a:focus, .nav-menu>ul>li.uk-active>a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight:bold;
+    color: #ff602e;
+    -webkit-transition: linear 0.3s;
+    -moz-transition: linear 0.3s;
+    -ms-transition: linear 0.3s;
+    -o-transition: linear 0.3s;
+    transition: linear 0.3s;
+}
+
+/*CONTENT*/
+.content{
+}
+.content>div:first-child{
+    box-sizing: border-box;
+    padding:10px 20px 20px 20px;
+    background-color: #fff;
+}
+.message-area{
+    resize: none;
+    width: 200px;
+    height: 120px!important;
+}
+
+.public-select{
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+    width: 200px;
+}
+.panel-thead {
+    padding: 1 15px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #0d3e45;
+    border-radius: 5px;
+}
+
+.panel-thead > table > thead > tr td:first-child {
+    border-left: none;
+}
+
+.panel-thead > table > thead > tr td:last-child {
+    border-right: none;
+}
+
+.panel-thead > table > thead > tr td {
+    border-right: 1px solid #aba9a9;
+}
+
+/*FOOTER*/
+.footer {
+    height: 140px;
+    padding: 15px 5px 5px 5px;
+    background-color: #961004;
+    box-sizing: border-box;
+    bottom: 0;
+}
+.footer ul {
+    list-style: none;
+}
+.footer ul > li {
+    width: auto;
+    display: inline;
+    margin-right: 20px;
+}
+.footer > ul > li > a {
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.footer > ul > li > a:hover {
+    text-decoration: none;
+}
+.footer h4 {
+    color: #fff;
+}
+.footer h4 > a {
+    color: #71929b;
+}
+.footer h4 > a:hover {
+    text-decoration: none;
+}
+.nav-mobile{
+
+    background-color: #404040;
+}
+.nav-mobile>div>div>div>div{
+    height: 90px;
+}
+.nav-mobile ul{
+    list-style: none;
+    padding: 0;
+}
+.nav-mobile img{
+    height: 45px;
+}
+.nav-mobile ul>li{
+    display: inline-block;
+}
+.nav-mobile ul>li>a{
+    color: #fff;
+    font-size: 24px;
+}
+/*ABOUT US*/
+.aboutus {
+    height: 500px;
+    width: 100%;
+    padding: 10px 20px;
+    background-image: url("../image/cignal-products.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/*PROMOS*/
+.promos{
+    padding: 20px 0;
+}
+.promos>div{
+    border-bottom: 1px solid #5d5d5d;
+    padding: 30px 0;
+}
+/*BUTTONS*/
+button, .uk-button {
+    width: 175px;
+    font-size: 18px;
+    padding: 10px;
+    background-color: transparent;
+    color: #fff;
+    border: 1px;
+    outline: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-shadow: none;
+}
+button:hover, button:active, .uk-button:hover, .uk-button:active {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    background-color: #000000;
+    color: #ffffff;
+}
+.button-green{
+    background-color: #0f9b7e;
+}
+
+/*ROLE INPUT*/
+*[role="reservation"] input {
+    width: 250px !important;
+    padding: 10px;
+}
+.input-padding{
+    padding-left: 48px!important;
+}
+
+/*LOGIN USER*/
+*[role="login"] .logo {
+    background-color: #eb2b25;
+    width: 150px;
+    padding: 10px 0px 13px 0px;
+
+}
+
+*[role="login"] .uk-modal-dialog {
+    background-color: #fff;
+    width: 625px;
+    -webkit-box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.68);
+    -moz-box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.68);
+    box-shadow: 0px 0px 13px 3px rgba(0, 0, 0, 0.68);
+
+}
+
+*[role="login"] input {
+    border-radius: 5px;
+    background-color: #ececec;
+    padding: 12px;
+    outline: none;
+    border: none;
+}
+
+
+
+
+/*RESPONSIVE*/
+@media (min-width: 320px) {
+    .content{
+        box-sizing: border-box;
+        background-color:  #ffffff;
+    }
+    .support-message{
+        resize: none;
+        height: 300px!important;
+        width: 400px;
+    }
+    .contact-no>span {
+        display: block;
+        position: absolute;
+
+        right: 225px;
+        margin-top: -25px;
+        line-height: 13px;
+        max-font-size: 16px;
+        min-font-size: 14px;
+        font-weight: bold;
+    }
+    .hero{
+        padding: 0;
+    }
+}
+@media (min-width: 768px) {
+    .content{
+        box-sizing: border-box;
+        background-color:  #ffffff;
+        margin-left: 270px;
+    }
+    *[role="reservation"] form>div>label span {
+        display: block;
+        position: absolute;
+        right: 312px;
+        margin-top: -21px;
+        line-height: 13px;
+        max-font-size: 16px;
+        min-font-size: 14px;
+        font-weight: bold;
+    }
+}
+@media (min-width: 1366px) {
+    .content{
+        box-sizing: border-box;
+        background-color:  #ffffff;
+        margin-left: 270px;
+    }
+    .hero{
+        padding: 155px 0;
+    }
+    *[role="reservation"] form>div>label span {
+        display: block;
+        position: absolute;
+
+        right: 420px;
+        margin-top: -21px;
+        line-height: 13px;
+        max-font-size: 16px;
+        min-font-size: 14px;
+        font-weight: bold;
+    }
+    .contact-no>span {
+        display: block;
+        position: absolute;
+
+        right: 550px;
+        margin-top: -25px;
+        line-height: 13px;
+        max-font-size: 16px;
+        min-font-size: 14px;
+        font-weight: bold;
+    }
+    .support-message{
+        resize: none;
+        height: 300px!important;
+        width: 600px;
+    }
+}
+@media (min-width: 1600px) {
+    .content{
+        box-sizing: border-box;
+        background-color:  #27242b;
+        margin-left: 270px;
+    }
+    .support-message{
+        resize: none;
+        height: 300px!important;
+        width: 600px;
+    }
+}
+@media (min-width: 1920px) {
+    .content{
+        box-sizing: border-box;
+        background-color:  #27242b;
+        margin-left: 270px;
+    }
+    *[role="reservation"] form>div>label span {
+        display: block;
+        position: absolute;
+        right: 705px;
+        margin-top: -21px;
+        line-height: 13px;
+        max-font-size: 16px;
+        min-font-size: 14px;
+        font-weight: bold;
+    }
+    .support-message{
+        resize: none;
+        height: 300px!important;
+        width: 600px;
+    }
+}
+
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}

@@ -1,0 +1,155 @@
+<admin-sidebar></admin-sidebar>
+
+<div class="content non-printable">
+
+    <div class="mgnt-navigation-menu">
+        <admin-top></admin-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-panel ">
+            <div class="uk-width-1-1 uk-panel">
+                <div class="uk-width-1-1 uk-panel uk-align-center uk-margin-bottom-remove">
+                    <div class="uk-width-1-1 uk-form-horizontal">
+                        <div class="uk-form-row ">
+                            <div class="uk-grid uk-grid-collapse uk-grid-large ">
+                                <h2 class="uk-width-5-10  uk-margin-small-top  uk-text-bold">Branches' Database</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="uk-width-1-1">
+                <div class="uk-width-1-1 uk-panel  uk-margin-bottom">
+                    <div class="uk-width-1-1" >
+                        <div>
+                            <label class="uk-text-bold">Branch Name:
+                                <select id="select-branch" ng-model="selectedBranchId" ng-change="load()" class="public-select uk-margin-bottom">
+                                    <option ng-if="!selectedBranchId" value="" disabled selected>--SELECT--</option>
+                                    <option value="All">All</option>
+                                    <option ng-repeat="data in branches" value="{{data.id}}">{{data.get('name')}}</option>
+                                </select></label>
+                            <button data-uk-modal="{target:'#printpreview'}" id="print" class="button button-green uk-hidden"><a class="uk-icon-print uk-icon-small"></a> print</button>
+                        </div>
+                    </div>
+
+                    <div ng-if="isAllSelected && !loader.isLoadingData" id="all" class="uk-width-1-1 table-list">
+                        <table class="uk-table">
+                            <thead>
+                                <tr class="uk-text-center uk-text-bold">
+                                    <td class="uk-width-2-10 "> Branch Name</td>
+                                    <td class="uk-width-1-10 "> No. of Clients</td>
+                                    <td class="uk-width-1-10 "> No. of Inquires</td>
+                                    <td class="uk-width-1-10 "> Pre-Registration Pending</td>
+                                    <td class="uk-width-1-10 "> Reservation</td>
+                                    <td class="uk-width-2-10 "> Actions</td>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody-text uk-text-center">
+                                <tr class="uk-text-center" dir-paginate="data in database | itemsPerPage: pageSize track by $index" current-page="currentPage" pagination-id="'allbranchPagination'">
+                                    <td class="uk-width-2-10 "><h4> {{data.branch.get('name')}}</h4></td>
+                                    <td class="uk-width-1-10 "><h4> {{data.clients.length}}</h4></td>
+                                    <td class="uk-width-1-10 "><h4> {{data.inquires.length}}</h4></td>
+                                    <td class="uk-width-1-10 "><h4> {{data.users.length}}</h4></td>
+                                    <td class="uk-width-1-10 "><h4> {{data.reservations.length}}</h4></td>
+                                    <td class="uk-width-2-10 ">
+                                        <button ng-click="view(data)" class="table-btn viewtrans-btn uk-text-bold uk-text-center"> VIEW</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <ul ng-if="isAllSelected && !loader.isLoadingData">
+                        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="app/components/shared/views/pagination-template.html" pagination-id="'allbranchPagination'"></dir-pagination-controls>
+                    </ul>
+
+                    <div ng-if="isIndividualSelected && !loader.isLoadingData" id="Silang" class="uk-width-1-1 table-list">
+                        <table class="uk-table">
+                            <thead>
+                                <tr class="uk-text-center">
+                                    <td class="uk-width-3-10 uk-tex-bold"> Name</td>
+                                    <td class="uk-width-3-10 "> Email Address</td>
+                                    <td class="uk-width-2-10 "> Contact No.</td>
+                                    <td class="uk-width-2-10 "> Number of Transactions</td>
+                                </tr>
+                            </thead>
+                            <tbody class="tbody-text uk-text-center">
+                                <tr class=" " dir-paginate="data in database | itemsPerPage: pageSize2 track by $index" current-page="currentPage2" pagination-id="'individualbranchPagination'">
+                                    <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('firstname') + ' ' + data.get('middlename') + ' ' + data.get('lastname')}}</h4></td>
+                                    <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('email')}}</h4></td>
+                                    <td class="uk-width-2-10 uk-text-center"><h4>+639{{data.get('contact')}}</h4></td>
+                                    <td class="uk-width-2-10 uk-text-center"><h4>{{data.transactions.length}}</h4></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <ul ng-if="isIndividualSelected && !loader.isLoadingData" class="uk-margin-large-top">
+                        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="app/components/shared/views/pagination-template.html" pagination-id="'individualbranchPagination'"></dir-pagination-controls>
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="printpreview" class="uk-modal printable">
+    <div class="uk-modal-dialog printpreview-modal ">
+        <!--<a class="uk-modal-close uk-close"></a>-->
+        <h1 class="uk-text-center uk-text-bold text-black uk-margin-bottom-remove">Uplink Digital Solutions Enterprise</h1>
+        <h5 class="uk-text-center uk-margin-top-remove uk-margin-bottom-remove text-black">134 JP Rizal St, Poblacion 1, Silang, Cavite</h5>
+        <h5 class="uk-text-center text-italic uk-margin-top-remove uk-margin-bottom-remove text-black">cavitecignal@gmail.com / lagunacignal@gmail.com</h5>
+        <h5 class="uk-text-center uk-margin-top-remove text-black">(046)-5124742,</h5>
+
+        <h3 class="uk-text-center uk-text-bold text-black uk-margin-bottom-remove">Cignal Branches' Summary Report</h3>
+
+        <div class="uk-width-1-1 table-list">
+            <table class="uk-table">
+                <thead>
+                <tr class="uk-text-center uk-text-bold">
+                    <td class="uk-width-2-10 "> Branch Name</td>
+                    <td class="uk-width-2-10 "> No. of Clients</td>
+                    <td class="uk-width-2-10 "> No. of Inquires</td>
+                    <td class="uk-width-2-10 "> Pre-Registration Pending</td>
+                    <td class="uk-width-2-10 "> Reservation</td>
+                </tr>
+                </thead>
+                <tbody class="tbody-text uk-text-center">
+                <tr class="uk-text-center" dir-paginate="data in database | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'allbranchPagination'">
+                    <td class="uk-width-2-10 "><h4> {{data.branch.get('name')}}</h4></td>
+                    <td class="uk-width-2-10 "><h4> {{data.clients.length}}</h4></td>
+                    <td class="uk-width-2-10 "><h4> {{data.inquires.length}}</h4></td>
+                    <td class="uk-width-2-10 "><h4> {{data.users.length}}</h4></td>
+                    <td class="uk-width-2-10 "><h4> {{data.reservations.length}}</h4></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="uk-text-left uk-margin-large-top uk-margin-bottom-remove">_________________________________</h4>
+        <h5 class="uk-text-left uk-margin-top-remove">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SIGNATURE OVER PRINTED NAME</h5>
+        <h5 class="uk-text-left uk-margin-large-top">Date generated: <a class="uk-text-bold" id="datenow"></a></h5>
+        <a onClick="javascript:window.print()" class="uk-icon-print uk-icon-large uk-margin-right uk-margin-small-top"></a>
+
+
+    </div>
+</div>
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    }
+    if(mm<10){
+        mm='0'+mm
+    }
+    var today = yyyy+'/'+mm+'/'+dd;
+    document.getElementById("datenow").innerHTML = today;
+</script>
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/js/admin.js"></script>

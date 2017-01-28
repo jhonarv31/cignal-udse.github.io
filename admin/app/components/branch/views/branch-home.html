@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="assets/css/branch.css"/>
+
+<branch-sidebar></branch-sidebar>
+
+<div class="content">
+    <div class="mgnt-navigation-menu">
+        <branch-top></branch-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <h2 class="  uk-margin-small-top uk-margin-large-bottom uk-text-bold">{{branch.get('name')}}</h2>
+        <div class="uk-width-1-1 uk-margin-bottom ">
+            <div class="uk-panel uk-width-large-6-10 uk-width-medium-9-10 uk-width-small-1-1 uk-grid uk-grid-width-large-1-3 notification uk-grid-width-medium-1-2 uk-grid-width-small-1-1 uk-grid-small uk-container-center">
+                <div>
+                    <h4 class="uk-text-center uk-text-bold">ADD TRANSACTION</h4>
+                    <a href="" class="uk-align-center " data-uk-modal="{target:'#addTransaction'}">
+                        <div class="uk-align-center uk-flex uk-flex-middle uk-flex-center Add-Button uk-margin-top">
+                            <h2 class="uk-text-bold uk-text-center text-white"><i class="uk-icon-plus uk-icon-large"></i></h2>
+                        </div>
+                    </a>
+                </div>
+                <div>
+                    <h4 class="uk-text-center uk-text-bold">INQUIRES</h4>
+                    <div class="uk-align-center uk-panel-box Inquires">
+                        <span class="notif uk-text-bold ">{{inquires.length}}</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="uk-text-center uk-text-bold">CLIENTS</h4>
+                    <div class="uk-align-center uk-panel-box Clients">
+                        <span class="notif uk-text-bold">{{clients.length}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="uk-width-1-1 uk-margin-bottom">
+            <h2 class="uk-margin-small-top uk-text-center uk-text-bold">Online Transactions</h2>
+            <div class="uk-panel uk-width-large-6-10 uk-width-medium-9-10 uk-width-small-1-1 uk-grid uk-grid-width-large-1-3 uk-grid-width-medium-1-2 uk-grid-width-small-1-1 notification uk-grid-small uk-container-center">
+                <div>
+                    <h4 class="uk-text-center uk-text-bold">PRE-REGISTRATION</h4>
+                    <div class="uk-align-center uk-panel-box Registration">
+                        <span class="notif uk-text-bold">{{preregistrations.length}}</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="uk-text-center uk-text-bold">RESERVATION</h4>
+                    <div class="uk-align-center uk-panel-box Reservation">
+                        <span class="notif uk-text-bold">{{reservations.length}}</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="uk-text-center uk-text-bold">CUSTOMER SUPPORT</h4>
+                    <div class="uk-align-center uk-panel-box Support">
+                        <span class="notif uk-text-bold">{{customerservices.length}}</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div id="addTransaction" class=" uk-modal ">
+    <div class="uk-modal-dialog back-gray">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top uk-margin-bottom text-white"> Add Transaction</h2>
+        <div class="uk-width-1-1 " role="login">
+
+            <form ng-submit="add()">
+                <div class="uk-width-1-1 ">
+                    <div class="uk-grid uk-grid-width-large-1-2 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small">
+                        <div class="uk-width-1-1  ">
+                            <h3 class="uk-text-center uk-text-bold">Personal Details</h3>
+                            <!--<div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-medium-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin" role="login">-->
+                                <!--<div>-->
+                                    <!--<label class="uk-text-bold">Full Name:-->
+                                        <!--<input ng-model="newData.name" ng-disabled="loader.isSaving" required type="text" class="uk-width-small-1-1" /></label>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-3 uk-grid-width-medium-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin" role="login">
+                                <div>
+                                    <label class="uk-text-bold">Last Name:
+                                        <input ng-model="newData.lastname" ng-disabled="loader.isSaving" type="text" class="uk-width-small-1-1" required /></label>
+                                </div>
+                                <div>
+                                    <label class="uk-text-bold">First Name:
+                                        <input ng-model="newData.firstname" ng-disabled="loader.isSaving" type="text" class="uk-width-small-1-1" required /></label>
+                                </div>
+                                <div>
+                                    <label class="uk-text-bold">Middle Name (optnl):
+                                        <input ng-model="newData.middlename" ng-disabled="loader.isSaving" type="text" class="uk-width-small-1-1" /></label>
+                                </div>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-2 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <div>
+                                    <label class="uk-text-bold contact-no">Contact No:
+                                        <input ng-model="newData.contact" ng-disabled="loader.isSaving" required type="text" class="input-padding uk-text-bold uk-width-small-1-1" maxlength="9" onkeypress="return isNumberKey(event)"><span>+639</span></label>
+                                </div>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <div>
+                                    <label class="uk-text-bold contact-no">Complete Address:
+                                        <input ng-model="newData.address" ng-disabled="loader.isSaving" required type="text" class="uk-width-1-1 " /></label>
+                                </div>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <div>
+                                    <label class="uk-text-bold">Email Address:
+                                        <input ng-model="newData.email" ng-disabled="loader.isSaving" required type="email" class="uk-width-1-1  uk-width-small-1-1" /></label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <hr class="uk-width-1-1">
+                <div class="uk-width-1-1 ">
+                    <div class="uk-grid uk-grid-width-large-1-2 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small ">
+                        <div class="uk-width-large-6-10 uk-width-small-1-1  back-gray uk-align-center">
+                            <h3 class="uk-text-center uk-text-bold">Transaction Details</h3>
+
+                            <div class="uk-margin-top">
+                                <h3 class="uk-text-bold uk-text-left text-black uk-text-center uk-margin-bottom-remove ">Type of service: </h3>
+                                <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-5 uk-grid-width-medium-1-3 uk-grid-width-small-1-1">
+                                    <div>
+                                        <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(0) > -1" ng-click="toggleCheckbox(0)" ng-disabled="loader.isSaving || isOthersChecked"> INQUIRE</label>
+                                    </div>
+                                    <div>
+                                        <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(1) > -1" ng-click="toggleCheckbox(1)" ng-disabled="loader.isSaving || isInquireChecked"> INSTALL/NEW ACCOUNT</label>
+                                    </div>
+                                    <div>
+                                        <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(2) > -1" ng-click="toggleCheckbox(2)" ng-disabled="loader.isSaving || isInquireChecked"> ADD BOX</label>
+                                    </div>
+                                    <div>
+                                        <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(3) > -1" ng-click="toggleCheckbox(3)" ng-disabled="loader.isSaving || isInquireChecked"> RELOCATION</label>
+                                    </div>
+                                    <div>
+                                        <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(4) > -1" ng-click="toggleCheckbox(4)" ng-disabled="loader.isSaving || isInquireChecked"> REPAIR</label>
+                                    </div>
+                                    <div>
+                                        <label for="specify" id="other" class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(5) > -1" ng-click="toggleCheckbox(5)" ng-disabled="loader.isSaving || isInquireChecked"> OTHERS</label>
+                                        <label for="other" id="specify" ng-show="selectedCheckbox.indexOf(5) > -1">Pls. specify: <input type="text" ng-model="othersTxt" ng-disabled="loader.isSaving"></label>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Plan (if available):
+                                    <input ng-model="newData.plan" ng-disabled="loader.isSaving || isInquireChecked" type="text" class="uk-width-1-1 "  /></label>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Amount Paid:
+                                    <input ng-model="newData.amount" ng-disabled="loader.isSaving || isInquireChecked" required type="text" class="uk-width-1-1 " /></label>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Receipt no.:
+                                    <input ng-model="newData.ar" ng-disabled="loader.isSaving || isInquireChecked" required type="text" class="uk-width-1-1 " /></label>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Date:
+                                    <input ng-model="newData.date" ng-disabled="loader.isSaving" required type="date" class="uk-width-1-1 " /></label>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Remarks:
+                                    <input ng-model="newData.remarks" ng-disabled="loader.isSaving" required type="text" class="uk-width-1-1 " /></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button ng-disabled="loader.isSaving" type="submit" class="button-box button-green uk-margin-top uk-align-center">
+                        <span ng-if="!loader.isSaving">SAVE</span>
+                        <span ng-if="loader.isSaving">SAVING...</span>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>
+<script src="assets/js/branch.js"></script>

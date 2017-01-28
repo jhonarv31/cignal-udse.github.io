@@ -1,0 +1,43 @@
+<admin-sidebar></admin-sidebar>
+
+<div class="content">
+
+    <div class="mgnt-navigation-menu">
+        <admin-top></admin-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-panel ">
+            <div class="uk-grid-width-large-1-5 uk-grid-width-medium-1-2 uk-grid-width-small-1-1 uk-grid uk-grid-collapse uk-grid-small  dash"  data-uk-grid-margin="">
+
+                <!--START BRANCHES TEMPLATE-->
+                <div ng-repeat="data in branches">
+                    <div class="uk-panel uk-panel-box ">
+                        <h3 class="uk-panel-title uk-margin-bottom-remove dropdown"data-uk-dropdown="{mode:'click'}" >{{data.get('name')}}
+                            <span class="uk-align-right" ><button class="uk-icon-gear gear uk-icon-small"></button></span>
+                            <div class="uk-dropdown drop">
+                                <ul class="uk-nav uk-nav-dropdown uk-text-bold">
+                                    <!--<li ng-click="setEditQuota(data)" class="uk-dropdown-close"><a class="" data-uk-modal="{target:'#addBranch'}">Edit Quota</a></li>-->
+                                    <li ng-click="monitor(data)" class="uk-dropdown-close"><a class="">Database</a></li>
+                                    <li ng-click="editBranch(data)" class="uk-dropdown-close"><a class="">Edit Branch</a></li>
+                                </ul>
+                            </div>
+                        </h3>
+
+                        <h4 class=" uk-margin-top-remove text-black"><span>user: </span> {{data.get('firstname')+ ' ' +data.get('lastname')}}</h4>
+                        <h5 class=" uk-margin-top-remove text-black"><span>location: </span> {{data.get('location')}}</h5>
+                        <div class="">
+                            <button ng-click="setEvaluate(data)" class="button button-green uk-align-center uk-width-8-10" data-uk-modal="{target:'#evaluate'}">EVALUATE</button>
+                        </div>
+                    </div>
+                </div>
+                <!--END BRANCHES TEMPLATE-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>

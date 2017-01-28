@@ -1,0 +1,266 @@
+<link rel="stylesheet" href="assets/css/branch.css"/>
+
+<branch-sidebar></branch-sidebar>
+
+<div class="content non-printable">
+    <div class="mgnt-navigation-menu">
+        <branch-top></branch-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-grid uk-grid-collapse uk-grid-width-1-2" role="login">
+            <h2 class=" uk-margin-small-top  uk-text-bold">List of Clients</h2>
+            <div class="uk-form-icon uk-flex uk-flex-middle">
+                <i class="uk-icon-search"></i>
+                <input ng-model="searchKeyword" class="uk-width-1-1" type="search" placeholder=" Search">
+            </div>
+        </div>
+        <div class="uk-width-1-1 uk-panel  uk-margin-bottom">
+            <div class="uk-width-1-1 table-list ">
+                <table class="uk-table">
+                    <thead>
+                    <tr class="uk-text-center">
+                        <td class="uk-width-2-10 uk-tex-bold"> Name</td>
+                        <td class="uk-width-2-10 "> Email Address</td>
+                        <td class="uk-width-2-10 "> Contact No.</td>
+                        <td class="uk-width-1-10 "> Number of Transactions</td>
+                        <td class="uk-width-3-10 "> Transactions</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class=" " dir-paginate="data in clients | filter: filterSearch | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'clientsPagination'">
+                        <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('firstname')+ ' ' + data.get('middlename')+ ' ' + data.get('lastname')}}</h4></td>
+                        <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('email')}}</h4></td>
+                        <td class="uk-width-2-10 uk-text-center"><h4>+639{{data.get('contact')}}</h4></td>
+                        <td class="uk-width-1-10 uk-text-center"><h4>{{data.transactions.length}}</h4></td>
+                        <td class="uk-width-3-10">
+                            <button ng-click="setAdd(data)" class="table-btn addtrans-btn uk-text-bold uk-text-center uk-margin-large-left" data-uk-modal="{target:'#addtransaction'}"> ADD</button>
+                            <button ng-click="setView(data)" class="table-btn viewtrans-btn uk-text-bold uk-text-center" data-uk-modal="{target:'#viewtransaction'}"> VIEW</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ul>
+                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="app/components/shared/views/pagination-template.html" pagination-id="'clientsPagination'"></dir-pagination-controls>
+            </ul>
+            <button data-uk-modal="{target:'#printpreview'}" id="print" class="button button-green"><a class="uk-icon-print uk-icon-small"></a> Print</button>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="printpreview" class="uk-modal printable">
+    <div class="uk-modal-dialog printpreview-modal ">
+        <!--<a class="uk-modal-close uk-close"></a>-->
+        <h1 class="uk-text-center uk-text-bold text-black uk-margin-bottom-remove">Uplink Digital Solutions Enterprise</h1>
+        <h5 class="uk-text-center uk-margin-top-remove uk-margin-bottom-remove text-black">134 JP Rizal St, Poblacion 1, Silang, Cavite</h5>
+        <h5 class="uk-text-center text-italic uk-margin-top-remove uk-margin-bottom-remove text-black">cavitecignal@gmail.com / lagunacignal@gmail.com</h5>
+        <h5 class="uk-text-center uk-margin-top-remove text-black">(046)-5124742,</h5>
+
+        <h3 class="uk-text-center uk-text-bold text-black uk-margin-bottom-remove">{{branch.get('name')}} Report</h3>
+
+        <div class="uk-width-1-1 table-list ">
+            <table class="uk-table">
+                <thead>
+                <tr class="uk-text-center">
+                    <td class="uk-width-3-10 uk-tex-bold"> Name</td>
+                    <td class="uk-width-3-10 "> Email Address</td>
+                    <td class="uk-width-2-10 "> Contact No.</td>
+                    <td class="uk-width-2-10 "> Number of Transactions</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class=" " dir-paginate="data in clients | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'clientsPagination'">
+                    <td class="uk-width-3-10 uk-text-center"><h4>{{data.get('firstname')+ ' ' + data.get('middlename')+ ' ' + data.get('lastname')}}</h4></td>
+                    <td class="uk-width-3-10 uk-text-center"><h4>{{data.get('email')}}</h4></td>
+                    <td class="uk-width-2-10 uk-text-center"><h4>+639{{data.get('contact')}}</h4></td>
+                    <td class="uk-width-2-10 uk-text-center"><h4>{{data.transactions.length}}</h4></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="uk-text-left uk-margin-large-top uk-margin-bottom-remove">_________________________________</h4>
+        <h5 class="uk-text-left uk-margin-top-remove">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SIGNATURE OVER PRINTED NAME</h5>
+        <h5 class="uk-text-left uk-margin-large-top">Date generated: <a id="datenow"></a></h5>
+        <a onClick="javascript:window.print()" class="uk-icon-print uk-icon-large uk-margin-right uk-margin-small-top"></a>
+
+
+    </div>
+</div>
+<div id="addtransaction" class="uk-modal ">
+    <div class="uk-modal-dialog addtrans-modal back-gray">
+        <a class="uk-modal-close uk-close"></a>
+        <h2 class=" uk-text-center uk-text-bold" >Adding service transaction to {{selectedAdd.get('firstname')}}</h2>
+        <div class="uk-width-1-1 " role="login">
+            <div class="uk-width-large-8-10 uk-width-medium-1-1 uk-width-small-1-1 uk-align-center">
+
+                <form ng-submit="add()">
+                    <div class="uk-grid uk-grid-width-large-1-2 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small ">
+                        <div class="uk-width-1-1 uk-align-center">
+
+                            <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-5 uk-grid-width-medium-1-3 uk-grid-width-small-1-1">
+                                <div>
+                                    <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(0) > -1" ng-click="toggleCheckbox(0)" ng-disabled="loader.isSubmitting"> INSTALL/NEW ACCOUNT</label>
+                                </div>
+                                <div>
+                                    <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(1) > -1" ng-click="toggleCheckbox(1)" ng-disabled="loader.isSubmitting"> ADD BOX</label>
+                                </div>
+                                <div>
+                                    <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(2) > -1" ng-click="toggleCheckbox(2)" ng-disabled="loader.isSubmitting"> RELOCATION</label>
+                                </div>
+                                <div>
+                                    <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(3) > -1" ng-click="toggleCheckbox(3)" ng-disabled="loader.isSubmitting"> REPAIR</label>
+                                </div>
+                                <div>
+                                    <label for="specify" id="other" class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(4) > -1" ng-click="toggleCheckbox(4)" ng-disabled="loader.isSubmitting"> OTHERS</label>
+                                    <label for="other" id="specify" ng-show="selectedCheckbox.indexOf(4) > -1">Pls. specify: <input type="text" ng-model="othersTxt" ng-disabled="loader.isSubmitting"></label>
+                                </div>
+                            </form>
+
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Plan (if available):
+                                    <input type="text" class="uk-width-1-1 " required /></label>
+                            </div>
+
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Amount Paid:
+                                    <input ng-model="newData.amount" ng-disabled="loader.isSaving" required type="text" class="uk-width-1-1 " /></label>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Receipt no.:
+                                    <input ng-model="newData.ar" ng-disabled="loader.isSaving" required  type="text" class="uk-width-1-1 " /></label>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Date:
+                                    <input ng-model="newData.date" ng-disabled="loader.isSaving" required type="date" class="uk-width-1-1 " /></label>
+                            </div>
+                            <div class=" uk-align-center uk-grid uk-grid-width-large-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                                <label class="uk-text-bold contact-no">Remarks:
+                                    <input ng-model="newData.remarks" ng-disabled="loader.isSaving" required type="text" class="uk-width-1-1 " /></label>
+                            </div>
+                        </div>
+
+                        <button ng-if="!loader.isSaving" type="submit" class="button-box button-green uk-align-center">SAVE</button>
+                        <button ng-if="loader.isSaving" class="button-box button-green uk-align-center">SAVING...</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="viewtransaction" class="uk-modal ">
+    <div class="uk-modal-dialog viewtrans-modal printable">
+        <a class="uk-modal-close uk-close"></a>
+        <div class="uk-grid uk-grid-collapse uk-grid-width-1-2 uk-width-9-10 uk-align-center">
+            <h4 class="uk-text-left uk-text-bold"> {{selectedView.get('firstname') + ' ' + selectedView.get('lastname')}}</h4>
+            <h4 class="uk-text-right uk-text-bold"> {{selectedView.get('email')}}</h4>
+        </div>
+        <div class="uk-grid uk-grid-collapse uk-grid-width-1-2 uk-width-9-10 uk-align-center">
+            <h4 class="uk-text-left uk-text-bold"> {{selectedView.get('address')}}</h4>
+            <h4 class="uk-text-right uk-text-bold">+639{{selectedView.get('contact')}}</h4>
+        </div>
+        <div class="uk-width-1-1 ">
+            <div class="uk-width-1-1 table-list-view ">
+                <table class="uk-table">
+                    <thead>
+                    <tr class="uk-text-center">
+                        <td class="uk-width-2-10 uk-tex-bold"> Service Type</td>
+                        <td class="uk-width-2-10 "> Plan(if available)</td>
+                        <td class="uk-width-1-10 "> Amount</td>
+                        <td class="uk-width-1-10 "> Date</td>
+                        <td class="uk-width-2-10 "> Reciept No.</td>
+                        <td class="uk-width-2-10 "> Remarks</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class=" " dir-paginate="data in selectedView.transactions | itemsPerPage: pageSizeTransaction" current-page="currentPageTransaction" pagination-id="'transactionsPagination'">
+                        <td class="uk-width-2-10 uk-text-center"><h5>{{data.get('type')}}</h5></td>
+                        <td class="uk-width-1-10 uk-text-center"><h5>{{data.get('postpaid') || data.get('plan') || "N/A"}}</h5></td>
+                        <td class="uk-width-2-10 uk-text-center"><h5>{{data.get('amount') | currency:"&#x20B1 "}}</h5></td>
+                        <td class="uk-width-1-10 uk-text-center"><h5>{{formatDate(data.get('date'))}}</h5></td>
+                        <td class="uk-width-2-10 uk-text-center" ng-if="data.get('ar')"><h5>AR{{(data.get('ar'))}}</h5></td>
+                        <td class="uk-width-2-10 uk-text-center" ng-if="!data.get('ar')"><h5>N/A</h5></td>
+                        <td class="uk-width-2-10 uk-text-center"><h5>{{data.get('remarks') || "N/A"}}</h5></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ul class="">
+                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="app/components/shared/views/pagination-template.html" pagination-id="'transactionsPagination'"></dir-pagination-controls>
+            </ul>
+
+            <a ng-click="download()" class="uk-icon-download uk-icon-large uk-align-left uk-margin-top"></a>
+            <a class="uk-icon-print uk-icon-large uk-align-left uk-margin-top" data-uk-modal="{target:'#printclienttransaction'}"></a>
+        </div>
+    </div>
+</div>
+<div id="printclienttransaction" class="uk-modal printable">
+    <div class="uk-modal-dialog printpreview-modal ">
+        <!--<a class="uk-modal-close uk-close"></a>-->
+        <h1 class="uk-text-center uk-text-bold text-black uk-margin-bottom-remove">Uplink Digital Solutions Enterprise</h1>
+        <h5 class="uk-text-center uk-margin-top-remove uk-margin-bottom-remove text-black">134 JP Rizal St, Poblacion 1, Silang, Cavite</h5>
+        <h5 class="uk-text-center text-italic uk-margin-top-remove uk-margin-bottom-remove text-black">cavitecignal@gmail.com / lagunacignal@gmail.com</h5>
+        <h5 class="uk-text-center uk-margin-top-remove text-black">(046)-5124742,</h5>
+
+        <h3 class="uk-text-center uk-text-bold text-black uk-margin-bottom-remove">{{selectedView.get('firstname') + ' ' + selectedView.get('lastname')}}'s Summary of Transactions Report</h3>
+
+        <div class="uk-width-1-1 table-list-view ">
+            <table class="uk-table">
+                <thead>
+                <tr class="uk-text-center">
+                    <td class="uk-width-2-10 uk-tex-bold"> Service Type</td>
+                    <td class="uk-width-2-10 "> Plan(if available)</td>
+                    <td class="uk-width-1-10 "> Amount</td>
+                    <td class="uk-width-1-10 "> Date</td>
+                    <td class="uk-width-2-10 "> Reciept No.</td>
+                    <td class="uk-width-2-10 "> Remarks</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class=" " dir-paginate="data in selectedView.transactions | itemsPerPage: pageSizeTransaction" current-page="currentPageTransaction" pagination-id="'transactionsPagination'">
+                    <td class="uk-width-2-10 uk-text-center"><h5>{{data.get('type')}}</h5></td>
+                    <td class="uk-width-2-10 uk-text-center"><h5>{{data.get('postpaid') || data.get('plan') || "N/A"}}</h5></td>
+                    <td class="uk-width-1-10 uk-text-center"><h5>{{data.get('amount') | currency:"&#x20B1 "}}</h5></td>
+                    <td class="uk-width-1-10 uk-text-center"><h5>{{formatDate(data.get('date'))}}</h5></td>
+                    <td class="uk-width-2-10 uk-text-center" ng-if="data.get('ar')"><h5>AR{{(data.get('ar'))}}</h5></td>
+                    <td class="uk-width-2-10 uk-text-center" ng-if="!data.get('ar')"><h5>N/A</h5></td>
+                    <td class="uk-width-2-10 uk-text-center"><h5>{{data.get('remarks') || "N/A"}}</h5></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h4 class="uk-text-left uk-margin-large-top uk-margin-bottom-remove">_________________________________</h4>
+        <h5 class="uk-text-left uk-margin-top-remove">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SIGNATURE OVER PRINTED NAME</h5>
+        <h5 class="uk-text-left uk-margin-large-top">Date generated: <a class="uk-text-bold" id="datenow2"></a></h5>
+        <a onClick="javascript:window.print()" class="uk-icon-print uk-icon-large uk-margin-right uk-margin-small-top"></a>
+
+
+    </div>
+</div>
+<script>
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1;
+
+    var yyyy = today.getFullYear();
+    if(dd<10){
+        dd='0'+dd
+    }
+    if(mm<10){
+        mm='0'+mm
+    }
+    var today = yyyy+'/'+mm+'/'+dd;
+    document.getElementById("datenow").innerHTML = today;
+    document.getElementById("datenow2").innerHTML = today;
+</script>
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>
+<script src="assets/js/branch.js"></script>

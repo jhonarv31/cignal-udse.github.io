@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="assets/css/branch.css"/>
+
+<branch-sidebar></branch-sidebar>
+
+<div class="content">
+    <div class="mgnt-navigation-menu">
+        <branch-top></branch-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <h2 class="  uk-margin-small-top  uk-text-bold">SMS Notification</h2>
+        <div class="uk-margin-top">
+
+            <form ng-submit="submit()" role="login">
+                <div class="uk-width-large-6-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center">
+                    <div class="uk-margin-top ">
+                        <div class="uk-width-large-6-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center " >
+                            <form ng-submit="submit()" class="uk-width-1-1  uk-margin-bottom">
+                                <label class="uk-text-bold">Number:
+                                    <div class="uk-width-1-1 uk-grid uk-grid-collapse uk-grid-small  uk-align-center" role="setting" >
+                                        <input ng-model="newData.to" ng-keypress="myKeypress($event)" ng-disabled="loader.isSubmitting" ng-change="numberChange()" required class="uk-text-bold uk-align-center uk-width-1-1" maxlength="13">
+                                    </div>
+                                </label>
+                                <div class="uk-grid uk-grid-collapse uk-grid-width-1-2">
+                                    <label class="uk-text-bold uk-margin-right">Message:
+                                        <textarea required ng-model="newData.body" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea"> </textarea></label>
+                                    <div class="uk-grid uk-grid-width-2-1">
+                                        <label class="uk-text-bold">Sender:
+                                            <textarea required ng-model="newData.sender" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea-sub"> </textarea></label>
+                                        <label class="uk-text-bold">Contact numbers:
+                                            <textarea required ng-model="newData.contact" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea-sub"> </textarea></label>
+                                    </div>
+                                </div>
+
+                                <button ng-disabled="loader.isSubmitting" type="submit" class="uk-align-center button-green button-box ">
+                                    <span ng-if="loader.isSubmitting"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+                                    <span class="text-white" ng-if="!loader.isSubmitting">SUBMIT</span>
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>
+<script src="assets/js/branch.js"></script>

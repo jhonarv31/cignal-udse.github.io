@@ -1,0 +1,62 @@
+<admin-sidebar></admin-sidebar>
+
+<div class="content">
+
+    <div class="mgnt-navigation-menu">
+        <admin-top></admin-top>
+    </div>
+
+    <div class="uk-width-1-1 uk-container-center ">
+        <div class="uk-margin-top">
+
+            <form ng-submit="save()" role="login">
+                <div class="uk-width-large-8-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center uk-margin-large-top" >
+                    <div class=" uk-align-center uk-grid uk-grid-width-large-1-3 uk-grid-width-medium-1-1 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin" role="login">
+                        <div>
+                            <label class="uk-text-bold">Last Name:
+                                <input ng-model="data.lastname" ng-disabled="loader.isSaving" type="text" class="uk-width-small-1-1" required /></label>
+                        </div>
+                        <div>
+                            <label class="uk-text-bold">First Name:
+                                <input ng-model="data.firstname" ng-disabled="loader.isSaving" type="text" class="uk-width-small-1-1" required /></label>
+                        </div>
+                        <div>
+                            <label class="uk-text-bold">Middle Name (optnl):
+                                <input ng-model="data.middlename" ng-disabled="loader.isSaving" type="text" class="uk-width-small-1-1" /></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uk-width-large-6-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center">
+                    <div class="uk-margin-top ">
+                        <h4 class="uk-text-bold text-red uk-text-center uk-margin-top back-red">Leave the form below blank if you don't want to change password.</h4>
+                        <div class="uk-width-large-6-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center " >
+
+                            <label class="uk-text-bold">Username:
+                                <input ng-model="data.username" disabled type="text" disabled class="uk-width-1-1 uk-text-bold uk-margin-bottom" /></label>
+                            <label class="uk-text-bold">Old Password:
+                                <input ng-model="data.oldPassword" ng-disabled="loader.isSaving" type="password" class="uk-width-1-1 uk-text-bold uk-margin-bottom"/></label>
+                            <label class="uk-text-bold">New Password:
+                                <input ng-model="data.newPassword" ng-disabled="loader.isSaving" type="password" class="uk-width-1-1 uk-text-bold uk-margin-bottom"/></label>
+                            <label class="uk-text-bold">Re-Type New Password:
+                                <input ng-model="data.retypePassword" ng-disabled="loader.isSaving" type="password" class="uk-width-1-1 uk-text-bold uk-margin-bottom"/></label>
+
+                            <button ng-disabled="loader.isSaving" type="submit" class="uk-align-center uk-margin-large-top button-green button-box ">
+                                <span ng-if="loader.isSaving"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+                                <span class="text-white" ng-if="!loader.isSaving">SAVE</span>
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>

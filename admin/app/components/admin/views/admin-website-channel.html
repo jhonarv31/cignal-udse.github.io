@@ -1,0 +1,211 @@
+<admin-sidebar></admin-sidebar>
+
+<div class="content">
+
+    <div class="mgnt-navigation-menu">
+        <admin-top></admin-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-panel ">
+            <div class="uk-width-1-1 uk-panel">
+                <div class="uk-width-1-1 uk-panel uk-align-center uk-margin-bottom-remove">
+                    <div class="uk-width-1-1 uk-form-horizontal">
+                        <div class="uk-form-row ">
+                            <div class="uk-grid uk-grid-collapse uk-grid-large ">
+                                <h2 class="uk-width-5-10  uk-margin-small-top  uk-text-bold">Channels Management</h2>
+                                <h3 class="uk-width-5-10 uk-text-right uk-margin-small-top" ><span class="uk-icon-plus uk-icon-small uk-margin-small-right"></span><a class="uk-text-bold" data-uk-modal="{target:'#Addchannel'}"> Add Channel</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="uk-width-1-1">
+                <div class="uk-width-1-1 uk-panel  uk-margin-bottom">
+                    <div class="uk-width-1-1 table-list ">
+                        <table class="uk-table">
+                            <thead>
+                            <tr class="uk-text-center uk-text-bold ">
+                                <td class="uk-width-2-10 ">Channel Name</td>
+                                <td class="uk-width-3-10 ">Image File</td>
+                                <td class="uk-width-2-10 ">Date Posted</td>
+                                <td class="uk-width-2-10 ">Action</td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="uk-text-center " dir-paginate="data in channels | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'channelsPagination'">
+                                <td class="uk-width-2-10 ">{{data.get('name')}}</td>
+                                <td class="uk-width-3-10 ">
+                                    <img ng-src="{{data.get('image')._url}}" alt="Channel image">
+                                </td>
+                                <td class="uk-width-2-10 ">{{formatDate(data.createdAt)}}</td>
+                                <td class="uk-width-2-10">
+                                    <a ng-click="setDelete(data)" data-uk-modal="{target:'#delete'}"><i class="uk-icon-trash-o uk-icon-small" data-uk-tooltip="{pos:'bottom-left'}" title="Delete"></i></a>
+                                    <a ng-click="setEdit(data)" data-uk-modal="{target:'#Edit'}"><i class="uk-icon-gear uk-icon-small uk-margin-small-right" data-uk-tooltip="{pos:'bottom-left'}" title="Edit"> </i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <ul>
+                        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="app/components/shared/views/pagination-template.html" pagination-id="'channelsPagination'"></dir-pagination-controls>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Addchannel" class=" uk-modal ">
+    <div class="uk-modal-dialog addbranch">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top uk-margin-large-bottom"> Add Channel</h2>
+
+        <form ng-submit="submit()">
+            <div class="uk-width-large-8-10 uk-width-medium-8-10 uk-width-small-1-1 uk-container uk-container-center ">
+                <div class="uk-width-1-1" >
+                    <div>
+                        <label class="uk-text-bold">Channel Type:
+                            <select ng-model="newData.type" ng-disabled="loader.isSubmitting" required class="public-select uk-margin-bottom">
+                                <option value="" ng-if="!newData.type" disabled selected>--SELECT--</option>
+                                <option value="Educational and Documentary">Educational and Documentary</option>
+                                <option value="Foreign Channels">Foreign Channels</option>
+                                <option value="Free To Air">Free To Air</option>
+                                <option value="General Entertainment">General Entertainment</option>
+                                <option value="High Definition">High Definition</option>
+                                <option value="Home TV Shopping">Home TV Shopping</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Lifestyle">Lifestyle</option>
+                                <option value="Movies">Movies</option>
+                                <option value="Music">Music</option>
+                                <option value="New and Information">New and Information</option>
+                                <option value="Religious Channels">Religious Channels</option>
+                                <option value="Sports">Sports</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class=" " role="login">
+                    <label class="uk-text-bold">Channel Name:
+                        <input ng-model="newData.name" ng-disabled="loader.isSubmitting" required type="text" class="uk-width-1-1 uk-text-bold "/></label>
+                </div>
+                <div class="uk-width-1-1 promo-des uk-margin-top"  role="login">
+                    <label>Image (410x270)
+                        <input onchange="angular.element(this).scope().onFileSelect(this)" ng-disabled="loader.isSubmitting" required class="uk-align-center uk-width-7-10" type="file" accept="image/*">
+                    </label>
+                </div>
+            </div>
+            <button ng-disabled="loader.isSubmitting" type="submit" class="button-box button-green uk-margin-top uk-align-center">
+                <span ng-if="loader.isSubmitting"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+                <span ng-if="!loader.isSubmitting">SAVE</span>
+            </button>
+        </form>
+
+    </div>
+</div>
+
+<div id="Edit" class=" uk-modal ">
+    <div class="uk-modal-dialog addbranch">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top uk-margin-large-bottom"> Update Channel</h2>
+
+        <form ng-submit="submit2()">
+            <div class="uk-width-large-8-10 uk-width-medium-8-10 uk-width-small-1-1 uk-container uk-container-center ">
+                <div class="uk-width-1-1" >
+                    <div>
+                        <label class="uk-text-bold">Channel Type:
+                            <select ng-model="selectedEdit.type" ng-disabled="loader.isSubmitting" required class="public-select uk-margin-bottom">
+                                <option value="" ng-if="!selectedEdit.type" disabled selected>--SELECT--</option>
+                                <option value="Educational and Documentary">Educational and Documentary</option>
+                                <option value="Foreign Channels">Foreign Channels</option>
+                                <option value="Free To Air">Free To Air</option>
+                                <option value="General Entertainment">General Entertainment</option>
+                                <option value="High Definition">High Definition</option>
+                                <option value="Home TV Shopping">Home TV Shopping</option>
+                                <option value="Kids">Kids</option>
+                                <option value="Lifestyle">Lifestyle</option>
+                                <option value="Movies">Movies</option>
+                                <option value="Music">Music</option>
+                                <option value="New and Information">New and Information</option>
+                                <option value="Religious Channels">Religious Channels</option>
+                                <option value="Sports">Sports</option>
+                            </select>
+                        </label>
+                    </div>
+                </div>
+                <div class=" " role="login">
+                    <label class="uk-text-bold">Channel Name:
+                        <input ng-model="selectedEdit.name" ng-disabled="loader.isSubmitting" required type="text" class="uk-width-1-1 uk-text-bold "/></label>
+                </div>
+                <div class="uk-width-1-1 promo-des uk-margin-top"  role="login">
+                    <label>Image (410x270)
+                        <input onchange="angular.element(this).scope().onFileSelect2(this)" ng-disabled="loader.isSubmitting" class="uk-align-center uk-width-7-10" type="file" accept="image/*">
+                    </label>
+                </div>
+            </div>
+            <button ng-disabled="loader.isSubmitting" type="submit" class="button-box button-green uk-margin-top uk-align-center">
+                <span ng-if="loader.isSubmitting"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+                <span ng-if="!loader.isSubmitting">SAVE</span>
+            </button>
+        </form>
+
+    </div>
+</div>
+
+<div id="admnpass" class=" uk-modal ">
+    <div class="uk-modal-dialog admnreq uk-container-center">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top "> Admin Password Required</h2>
+        <div class="uk-width-large-6-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center" role="login">
+            <div class=" ">
+                <label class="uk-text-bold">Password:
+                    <input ng-model="adminPassword" ng-keypress="submitEnter($event, submitNext)" ng-disabled="loader.isAdding" type="password" class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+        </div>
+        <button ng-click="submitNext()" ng-disabled="loader.isSubmitting" class=" button-green uk-margin-large-top uk-align-center">
+            <span ng-if="loader.isSubmitting"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+            <span ng-if="!loader.isSubmitting">SUBMIT</span>
+        </button>
+    </div>
+</div>
+
+<div id="admnpass2" class=" uk-modal ">
+    <div class="uk-modal-dialog admnreq uk-container-center">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top "> Admin Password Required</h2>
+        <div class="uk-width-large-6-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center" role="login">
+            <div class=" ">
+                <label class="uk-text-bold">Password:
+                    <input ng-model="adminPassword2" ng-keypress="submitEnter($event, delete)" ng-disabled="loader.isDeleting" type="password" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+        </div>
+        <button ng-click="delete()" ng-disabled="loader.isDeleting" class=" button-green uk-margin-large-top uk-align-center">
+            <span ng-if="loader.isDeleting"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+            <span ng-if="!loader.isDeleting">SUBMIT</span>
+        </button>
+    </div>
+</div>
+
+<div id="delete" class="uk-modal ">
+    <div class="uk-modal-dialog delbranch ">
+        <h2 class=" uk-text-center uk-text-bold" >Do you really want to delete this channel?</h2>
+        <div class="uk-width-1-1 uk-panel margin-medium-top">
+            <p class="uk-text-center"><span class="text-red uk-text-large">Note* </span>Deleting this channel will permanently erase in website and will archive in database.</p>
+            <div class="uk-width-1-1 uk-grid uk-grid-collapse uk-grid-width-large-1-2 uk-grid-width-medium-1-2 uk-grid-width-small-1-1 uk-grid-medium margin-medium-top" >
+                <div>
+                    <button class="uk-align-right button-red" data-uk-modal="{target:'#admnpass2'}">Yes</button>
+                </div>
+                <div>
+                    <button class="uk-align-left button-green uk-modal-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>
+<script src="assets/js/admin.js"></script>

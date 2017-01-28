@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title property="og:title" content="Uplink">UDSE | Uplink Digital Solutions Enterprise</title>
+    <link rel="icon" type="image/png" href="assets/image/Up-Logo.png" />
+    <link rel="stylesheet" href="assets/uikit-2.24.2/css/uikit.almost-flat.min.css"/>
+    <link rel="stylesheet" href="assets/uikit-2.24.2/css/components/notify.almost-flat.min.css"/>
+    <link rel="stylesheet" href="assets/uikit-2.24.2/css/uikit.min.css"/>
+    <link rel="stylesheet" href="assets/css/admin.css"/>
+    <link rel="stylesheet" href="assets/fonts/lato/lato.css"/>
+</head>
+<body>
+
+
+
+<ui-view></ui-view>
+
+
+
+<!-- OTHERS -->
+<script>window.jQuery || document.write('<script  src="assets/uikit-2.24.2/js/jquery-1.10.2.min.js"><\/script>')</script>
+
+<!--LIBS-->
+<script src="libs/angular-1.4.3.js"></script>
+<script src="libs/angular-ui-router-0.2.18.min.js"></script>
+<script src="libs/ng-storage-0.3.6.js"></script>
+<script src="libs/parse-1.6.14.js"></script>
+<!--<script src="libs/parse-1.6.14.min.js"></script>-->
+<script src="libs/dirPagination.js"></script>
+
+<!--ANGULAR MAIN-->
+<script src="app/app.module.js"></script>
+<script src="app/app.config.js"></script>
+
+<!--ANGULAR CONTROLLERS-->
+<script src="app/components/shared/controllers/loginCtrl.js"></script>
+<script src="app/components/branch/controllers/branchClientCtrl.js"></script>
+<script src="app/components/branch/controllers/branchHomeCtrl.js"></script>
+<script src="app/components/branch/controllers/branchInquireCtrl.js"></script>
+<script src="app/components/branch/controllers/branchOnlineTransactionCtrl.js"></script>
+<script src="app/components/branch/controllers/branchSmsCtrl.js"></script>
+<script src="app/components/branch/controllers/branchSettingCtrl.js"></script>
+<script src="app/components/admin/controllers/adminBranchAccountCtrl.js"></script>
+<script src="app/components/admin/controllers/adminBranchBranchesCtrl.js"></script>
+<script src="app/components/admin/controllers/adminDashboardCtrl.js"></script>
+<script src="app/components/admin/controllers/adminBranchDatabaseCtrl.js"></script>
+<script src="app/components/admin/controllers/adminWebsiteEventCtrl.js"></script>
+<script src="app/components/admin/controllers/adminWebsiteChannelCtrl.js"></script>
+<script src="app/components/admin/controllers/adminWebsitePlanCtrl.js"></script>
+<script src="app/components/admin/controllers/adminSettingCtrl.js"></script>
+
+<!--ANGULAR DIRECTIVES-->
+<script src="app/directives/branchSidebarDir.js"></script>
+<script src="app/directives/branchTopDir.js"></script>
+<script src="app/directives/adminSidebarDir.js"></script>
+<script src="app/directives/adminTopDir.js"></script>
+
+<!--ANGULAR DIRECTIVES CONTROLLERS-->
+<script src="app/directives/controllers/branchSidebarCtrl.js"></script>
+<script src="app/directives/controllers/branchTopCtrl.js"></script>
+<script src="app/directives/controllers/adminSidebarCtrl.js"></script>
+<script src="app/directives/controllers/adminTopCtrl.js"></script>
+
+<!--ANGULAR FACTORIES-->
+<script src="app/factories/numbersFactory.js"></script>
+
+<!--ANGULAR SERVICES-->
+<script src="app/services/customService.js"></script>
+<script src="app/services/parseService.js"></script>
+<script src="app/services/uikitService.js"></script>
+<script src="app/services/BranchesService.js"></script>
+<script src="app/services/BranchService.js"></script>
+<script src="app/services/ReservationsService.js"></script>
+<script src="app/services/InquiresService.js"></script>
+<script src="app/services/ClientsService.js"></script>
+<script src="app/services/ChannelsService.js"></script>
+<script src="app/services/PlansService.js"></script>
+<script src="app/services/EventsService.js"></script>
+
+</body>
+
+</html>

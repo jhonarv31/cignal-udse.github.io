@@ -1,0 +1,174 @@
+<admin-sidebar></admin-sidebar>
+
+<div class="content">
+
+    <div class="mgnt-navigation-menu">
+        <admin-top></admin-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-panel ">
+            <div class="uk-width-1-1 uk-panel">
+                <div class="uk-width-1-1 uk-panel uk-align-center uk-margin-bottom-remove">
+                    <div class="uk-width-1-1 uk-form-horizontal">
+                        <div class="uk-form-row ">
+                            <div class="uk-grid uk-grid-collapse uk-grid-large ">
+                                <h2 class="uk-width-5-10  uk-margin-small-top  uk-text-bold">Branch Management</h2>
+                                <h3 class="uk-width-5-10 uk-text-right uk-margin-small-top" ><span class="uk-icon-plus uk-icon-small uk-margin-small-right"></span><a class="uk-text-bold" data-uk-modal="{target:'#addBranch'}">Add Branch </a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="uk-width-1-1">
+                <div class="uk-width-1-1 uk-panel  uk-margin-bottom">
+                    <div class="uk-width-1-1 table-list ">
+                        <table class="uk-table">
+                            <thead>
+                                <tr class="uk-text-center uk-text-bold ">
+                                    <td class="uk-width-2-10 ">Branch Name</td>
+                                    <td class="uk-width-3-10 ">Location</td>
+                                    <td class="uk-width-2-10 ">Supervisor</td>
+                                    <td class="uk-width-2-10 ">Contact</td>
+                                    <td class="uk-width-1-10 ">Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="uk-text-center " dir-paginate="data in branches | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'branchesPagination'">
+                                    <td class="uk-width-2-10 ">{{data.get('name')}}</td>
+                                    <td class="uk-width-3-10 ">{{data.get('location')}}</td>
+                                    <td class="uk-width-2-10 ">{{data.get('firstname') + ' ' + data.get('middlename') + ' ' + data.get('lastname')}}</td>
+                                    <td class="uk-width-2-10 ">{{data.get('contact')}}</td>
+                                    <td class="uk-width-1-10">
+                                        <i ng-hide="true" class="uk-icon-gear uk-icon-small" data-uk-tooltip="{pos:'bottom-left'}" title="Edit Branch"> </i>
+                                        <a ng-click="setDelete(data)" data-uk-modal="{target:'#delete'}"><i class="uk-icon-trash-o uk-icon-small" data-uk-tooltip="{pos:'bottom-left'}" title="Delete"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <ul>
+                        <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="app/components/shared/views/pagination-template.html" pagination-id="'branchesPagination'"></dir-pagination-controls>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addBranch" class=" uk-modal ">
+    <div class="uk-modal-dialog addbranch">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top uk-margin-bottom"> Add Branch</h2>
+        <div class="uk-width-8-10 uk-align-center" role="login">
+            <div class=" ">
+                <label class="uk-text-bold">Branch Name:
+                    <input ng-model="newData.name" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="text" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+            <div class=" ">
+                <label class="uk-text-bold">Location:
+                    <input ng-model="newData.location" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="text" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+            <div class="uk-width-large-1-1 uk-width-medium-1-1 uk-width-small-1-1 uk-align-center uk-margin-top" >
+                <div class=" uk-align-center uk-grid uk-grid-width-large-1-3 uk-grid-width-medium-1-3 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin" role="login">
+                    <div>
+                        <label class="uk-text-bold">Last Name:
+                            <input ng-model="newData.lastname" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="text" class="uk-width-small-1-1" required /></label>
+                    </div>
+                    <div>
+                        <label class="uk-text-bold">First Name:
+                            <input ng-model="newData.firstname" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="text" class="uk-width-small-1-1" required /></label>
+                    </div>
+                    <div>
+                        <label class="uk-text-bold">Middle Name (optnl):
+                            <input ng-model="newData.middlename" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="text" class="uk-width-small-1-1" /></label>
+                    </div>
+                </div>
+            </div>
+            <div class="uk-width-large-7-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center uk-grid uk-grid-width-large-1-2 uk-grid-width-small-1-1 uk-grid-collapse uk-grid-small uk-margin">
+                <div>
+                    <label class="uk-text-bold ">Contact No:
+                        <input ng-model="newData.contact" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" required type="text" class="input-padding uk-text-bold uk-width-small-1-1" maxlength="11" onkeypress="return isNumberKey(event)"></label>
+                </div>
+                <div>
+                    <label class="uk-text-bold">Email Address:
+                        <input ng-model="newData.email" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" required type="email" class="input-padding uk-width-small-1-1"></label>
+                </div>
+            </div>
+            <div class="uk-width-large-7-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center">
+                <label class="uk-text-bold">Login ID:
+                    <input ng-model="newData.username" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="text" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+            <div class="uk-width-large-7-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center">
+                <label class="uk-text-bold">Password:
+                    <input ng-model="newData.password" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="password" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+            <div class="uk-width-large-7-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center">
+                <label class="uk-text-bold">Re-type Password:
+                    <input ng-model="newData.retypePassword" ng-keypress="submitEnter($event, add)" ng-disabled="loader.isAdding" type="password" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+        </div>
+        <button ng-click="add()" ng-disabled="loader.isAdding" class="button-box button-green uk-margin-large-top uk-align-center">
+            <span ng-if="loader.isAdding"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+            <span ng-if="!loader.isAdding">NEXT</span>
+        </button>
+    </div>
+</div>
+
+<div id="admnpass" class=" uk-modal ">
+    <div class="uk-modal-dialog admnreq uk-container-center">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top "> Admin Password Required</h2>
+        <div class="uk-width-large-6-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center" role="login">
+            <div class=" ">
+                <label class="uk-text-bold">Password:
+                    <input ng-model="adminPassword" ng-keypress="submitEnter($event, addNext)" ng-disabled="loader.isAdding" type="password" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+        </div>
+        <button ng-click="addNext()" ng-disabled="loader.isAdding" class=" button-green uk-margin-large-top uk-align-center">
+            <span ng-if="loader.isAdding"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+            <span ng-if="!loader.isAdding">SUBMIT</span>
+        </button>
+    </div>
+</div>
+
+<div id="admnpass2" class=" uk-modal ">
+    <div class="uk-modal-dialog admnreq uk-container-center">
+        <a class="uk-modal-close uk-close"></a>
+        <h2  class="uk-text-bold uk-text-center uk-margin-small-top "> Admin Password Required</h2>
+        <div class="uk-width-large-6-10 uk-width-medium-6-10 uk-width-small-1-1 uk-align-center" role="login">
+            <div class=" ">
+                <label class="uk-text-bold">Password:
+                    <input ng-model="adminPassword2" ng-keypress="submitEnter($event, delete)" ng-disabled="loader.isDeleting" type="password" required class="uk-width-1-1 uk-text-bold "/></label>
+            </div>
+        </div>
+        <button ng-click="delete()" ng-disabled="loader.isDeleting" class=" button-green uk-margin-large-top uk-align-center">
+            <span ng-if="loader.isDeleting"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+            <span ng-if="!loader.isDeleting">SUBMIT</span>
+        </button>
+    </div>
+</div>
+
+<div id="delete" class="uk-modal ">
+    <div class="uk-modal-dialog delbranch ">
+        <h2 class=" uk-text-center uk-text-bold" >Do you really want to delete this branch?</h2>
+        <div class="uk-width-1-1 uk-panel margin-medium-top">
+            <p class="uk-text-center"><span class="text-red uk-text-large">Note* </span>Deleting this branch will permanently erase in website and will archive in database.</p>
+            <div class="uk-width-1-1 uk-grid uk-grid-collapse uk-grid-width-large-1-2 uk-grid-width-medium-1-2 uk-grid-width-small-1-1 uk-grid-medium margin-medium-top" >
+                <div>
+                    <button class="uk-align-right button-red" data-uk-modal="{target:'#admnpass2'}">Yes</button>
+                </div>
+                <div>
+                    <button class="uk-align-left button-green uk-modal-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="assets/js/admin.js"></script>
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>

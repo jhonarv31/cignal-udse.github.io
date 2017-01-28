@@ -1,0 +1,26 @@
+<ul class="uk-pagination " ng-if="1 < pages.length || !autoHide">
+    <li ng-class="{ 'uk-disabled' : pagination.current == 1 }">
+        <span ng-if="pagination.current == 1"><i class="uk-icon-angle-double-left"></i></span>
+        <a class="text-blue" ng-click="setCurrent(1)" ng-if="pagination.current != 1"><i class="uk-icon-angle-double-left"></i></a>
+    </li>
+    <li ng-if="directionLinks" ng-class="{ 'uk-disabled' : pagination.current == 1 }">
+        <span ng-if="pagination.current == 1"><i class="uk-icon-angle-left"></i></span>
+        <a class="text-blue" ng-click="setCurrent(pagination.current - 1)" ng-if="pagination.current != 1"><i class="uk-icon-angle-left"></i></a>
+    </li>
+
+
+    <li ng-repeat="pageNumber in pages track by tracker(pageNumber, $index)" ng-class="{ 'uk-active' : pagination.current == pageNumber, 'uk-disabled' : pageNumber == '...' }">
+        <span ng-if="pageNumber == pagination.current">{{ pageNumber }}</span>
+        <a ng-click="setCurrent(pageNumber)" ng-if="pageNumber != pagination.current">{{ pageNumber }}</a>
+    </li>
+
+
+    <li ng-if="directionLinks" ng-class="{ 'uk-disabled' : pagination.current == pagination.last }">
+        <span ng-if="pagination.current == pagination.last"><i class="uk-icon-angle-right"></i></span>
+        <a class="text-blue" ng-click="setCurrent(pagination.current + 1)" ng-if="pagination.current != pagination.last"><i class="uk-icon-angle-right"></i></a>
+    </li>
+    <li ng-class="{ 'uk-disabled' : pagination.current == pagination.last }">
+        <span ng-if="pagination.current == pagination.last"><i class="uk-icon-angle-double-right"></i></span>
+        <a class="text-blue" ng-click="setCurrent(pagination.last)" ng-if="pagination.current != pagination.last"><i class="uk-icon-angle-double-right"></i></a>
+    </li>
+</ul>

@@ -1,0 +1,53 @@
+<div id="offcanvas" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar uk-offcanvas-bar">
+        <a href=""><img src="assets/image/Uplink-Logo-White.png" width="200" alt="Cignal" class="uk-align-center uk-margin-large-bottom uk-margin-small-top"/></a>
+        <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:false}">
+            <li ng-class="{'uk-active': currentState == 'admin-dashboard'}"><a ui-sref="admin-dashboard"><span class="uk-icon-dashboard uk-icon-small uk-margin-small-bottom"></span> Dashboard</a></li>
+            <li class="uk-parent" ng-class="{'uk-active': currentState == 'admin-branch-account' || currentState == 'admin-branch-branches' || currentState == 'admin-branch-database'}">
+                <a href="#"><span class="uk-icon-users uk-icon-small uk-margin-small-bottom"></span> Branch Management</a>
+                <ul class="uk-nav-sub">
+                    <li><a ui-sref="admin-branch-branches">Branches</a></li>
+                    <li><a ui-sref="admin-branch-database">Database</a></li>
+                    <li><a ui-sref="admin-branch-account">Account Management</a></li>
+                </ul>
+            </li>
+            <li class="uk-parent" ng-class="{'uk-active': currentState == 'admin-website-channel' || currentState == 'admin-website-event' || currentState == 'admin-website-plan'}">
+                <a href="#"><span class="uk-icon-folder-open-o uk-icon-small uk-margin-small-bottom"></span> Website Management</a>
+                <ul class="uk-nav-sub">
+                    <li><a ui-sref="admin-website-event">Event and Promo Management</a></li>
+                    <li><a ui-sref="admin-website-plan">Plans Management</a></li>
+                    <li><a ui-sref="admin-website-channel">Channels Management</a></li>
+                </ul>
+
+            </li>
+            <li ng-class="{'uk-active': currentState == 'admin-setting'}"><a ui-sref="admin-setting"><span class="uk-icon-gears uk-icon-small uk-margin-small-bottom"></span> Setting</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="mgnt-navigation-wrapper uk-height-viewport uk-hidden-small">
+    <a href=""><img src="assets/image/Uplink-Logo-White.png" alt="Cignal" class="uk-align-center uk-margin-large-bottom uk-margin-small-top"/></a>
+    <div class="uk-width-1-1 uk-panel mgnt-nav-menu">
+        <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:false}">
+            <li ng-class="{'uk-active': currentState == 'admin-dashboard'}"><a ui-sref="admin-dashboard"><span class="uk-icon-dashboard uk-icon-small uk-margin-small-bottom"></span> Dashboard</a></li>
+            <li class="uk-parent" ng-class="{'uk-active': currentState == 'admin-branch-account' || currentState == 'admin-branch-branches' || currentState == 'admin-branch-database'}">
+                <a href="#"><span class="uk-icon-users uk-icon-small uk-margin-small-bottom"></span> Branch Management</a>
+                <ul class="uk-nav-sub">
+                    <li><a ui-sref="admin-branch-branches">Branches</a></li>
+                    <li><a ui-sref="admin-branch-database">Database</a></li>
+                    <li><a ui-sref="admin-branch-account">Account Management</a></li>
+                </ul>
+            </li>
+            <li class="uk-parent" ng-class="{'uk-active': currentState == 'admin-website-channel' || currentState == 'admin-website-event' || currentState == 'admin-website-plan'}">
+                <a href="#"><span class="uk-icon-folder-open-o uk-icon-small uk-margin-small-bottom"></span> Website Management</a>
+                <ul class="uk-nav-sub">
+                    <li><a ui-sref="admin-website-event">Event and Promo Management</a></li>
+                    <li><a ui-sref="admin-website-plan">Plans Management</a></li>
+                    <li><a ui-sref="admin-website-channel">Channels Management</a></li>
+                </ul>
+
+            </li>
+            <li ng-class="{'uk-active': currentState == 'admin-setting'}"><a ui-sref="admin-setting"><span class="uk-icon-gears uk-icon-small uk-margin-small-bottom"></span> Setting</a></li>
+        </ul>
+    </div>
+</div>

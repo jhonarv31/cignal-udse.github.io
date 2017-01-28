@@ -1,0 +1,98 @@
+<link rel="stylesheet" href="assets/css/branch.css"/>
+
+<branch-sidebar></branch-sidebar>
+
+<div class="content">
+    <div class="mgnt-navigation-menu">
+        <branch-top></branch-top>
+    </div>
+
+    <div class="uk-width-1-1">
+        <div class="uk-form-row  ">
+            <div class="uk-grid uk-grid-collapse uk-grid-width-1-2" role="login">
+                <h2 class=" uk-margin-small-top  uk-text-bold">List of Inquire</h2>
+                <div class="uk-form-icon uk-flex uk-flex-middle">
+                    <i class="uk-icon-search"></i>
+                    <input ng-model="searchKeyword" class="uk-width-1-1" type="search" placeholder=" Search">
+                </div>
+            </div>
+        </div>
+        <div class="uk-width-1-1 uk-panel  uk-margin-bottom">
+            <div class="uk-width-1-1 table-list ">
+                <table class="uk-table">
+                    <thead>
+                    <tr class="uk-text-center">
+                        <td class="uk-width-2-10 uk-tex-bold">Name</td>
+                        <td class="uk-width-1-10 ">Email Address</td>
+                        <td class="uk-width-1-10 ">Registration Type</td>
+                        <td class="uk-width-1-10 ">Contact No.</td>
+                        <td class="uk-width-2-10 ">Address</td>
+                        <td class="uk-width-2-10 ">Remarks</td>
+                        <td class="uk-width-1-10 ">Action</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="uk-text-center" dir-paginate="data in inquires | filter: filterSearch | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'inquiresPagination'">
+                        <td class="uk-width-2-10 "><h5>{{data.get('firstname')+ ' ' + data.get('middlename')+ ' ' + data.get('lastname')}}</h5></td>
+                        <td class="uk-width-1-10 "><h5>{{data.get('email')}}</h5></td>
+                        <td class="uk-width-1-10 "><h5>{{data.get('registration')}}</h5></td>
+                        <td class="uk-width-1-10 "><h5>+639{{data.get('contact')}}</h5></td>
+                        <td class="uk-width-2-10 "><h5>{{data.get('address')}}</h5></td>
+                        <td class="uk-width-2-10 "><h5>{{data.get('remarks')}}</h5></td>
+                        <td class="uk-width-1-10 ">
+                            <a ng-click="setAdd(data)" class="uk-margin-left" data-uk-modal="{target:'#addtoClient'}"><i class="uk-icon-user-plus uk-icon-small"></i></a>
+                            <a ng-click="setDelete(data)" class="uk-margin-small-left" data-uk-modal="{target:'#delete'}"><i class="uk-icon-trash-o uk-icon-small" data-uk-tooltip="{pos:'bottom-left'}" title="Delete"></i></a></td>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ul>
+                <dir-pagination-controls on-page-change="pageChanged(newPageNumber)" template-url="app/components/shared/views/pagination-template.html" pagination-id="'inquiresPagination'"></dir-pagination-controls>
+            </ul>
+
+        </div>
+
+    </div>
+</div>
+
+<div id="addtoClient" class="uk-modal ">
+    <div class="uk-modal-dialog delbranch ">
+        <h2 class=" uk-text-center uk-text-bold" >Do you really want to add this to the list of clients?</h2>
+        <div class="uk-width-1-1 uk-panel margin-medium-top">
+            <p class="uk-text-center"><span class="text-red uk-text-large">Note* </span>Adding to list will serve as regular customer.</p>
+            <div class=" uk-grid uk-grid-collapse uk-grid-width-1-2 uk-grid-medium margin-medium-top" >
+                <div>
+                    <button ng-click="add()" ng-disabled="loader.isAdding" class="uk-align-right button-red">Yes</button>
+                </div>
+                <div>
+                    <button class="uk-align-left button-green uk-modal-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="delete" class="uk-modal ">
+    <div class="uk-modal-dialog delbranch ">
+        <h2 class=" uk-text-center uk-text-bold" >Do you really want to delete this inquire?</h2>
+        <div class="uk-width-1-1 uk-panel margin-medium-top">
+            <p class="uk-text-center"><span class="text-red uk-text-large">Note* </span>Deleting this will permanently erase all files in database.</p>
+            <div class=" uk-grid uk-grid-collapse uk-grid-width-1-2 uk-grid-medium margin-medium-top" >
+                <div>
+                    <button ng-click="delete()" ng-disabled="loader.isDeleting" class="uk-align-right button-red">Yes</button>
+                </div>
+                <div>
+                    <button class="uk-align-left button-green uk-modal-close">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="assets/uikit-2.24.2/js/uikit.min.js"></script>
+<script src="assets/uikit-2.24.2/js/components/notify.min.js"></script>
+<script src="assets/js/branch.js"></script>

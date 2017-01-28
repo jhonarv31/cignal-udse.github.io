@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title property="og:title" content="CignalCable">Cignal Cable TV</title>
+    <link rel="icon" type="image/png" href="assets/image/Cignal_Logo.png" />
+    <link rel="stylesheet" href="assets/css/website.css"/>
+    <link rel="stylesheet" href="assets/uikit-2.24.2/css/uikit.almost-flat.min.css"/>
+    <link rel="stylesheet" href="assets/uikit-2.24.2/css/uikit.min.css"/>
+    <link rel="stylesheet" href="assets/fonts/lato/lato.css"/>
+    <script>window.jQuery || document.write('<script  src="assets/uikit-2.24.2/js/jquery-1.10.2.min.js"><\/script>')</script>
+</head>
+<body ng-controller="logsCtrl">
+
+<floating-menu></floating-menu>
+
+<div class="uk-width-1-1 uk-panel uk-hidden-large uk-hidden-medium nav-mobile" data-uk-sticky>
+    <div class="uk-width-9-10 uk-container-center">
+        <div class=" uk-grid uk-grid-collapse uk-grid-width-1-2">
+            <div class="  ">
+                <div class="uk-width-1-1 uk-panel  uk-flex uk-flex-middle">
+                    <a href="#top" data-uk-smooth-scroll><img src="assets/image/Cignal_Logo.png" alt="Cignal Cable" class=" "/></a>
+                </div>
+
+            </div>
+            <div class=" " >
+                <div class="uk-width-1-1 uk-panel uk-flex uk-flex-middle uk-flex-right ">
+                    <ul class="uk-text-right">
+                        <li><a href="#offcanvas" data-uk-offcanvas><i class="uk-icon-bars"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="navigation-wrapper uk-height-viewport uk-hidden-small">
+    <a href="#top"><img src="assets/image/Cignal_Logo.png" alt="Cignal" class="uk-align-center uk-margin-large-bottom uk-margin-small-top"/></a>
+    <div class="uk-width-1-1 uk-panel nav-menu">
+        <ul class="uk-text-left">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="channels.html">Channels</a></li>
+            <li><a href="plans.html">Cignal Plans</a></li>
+            <li><a href="promos.html">Events and Promos</a></li>
+            <li><a href="user-reservation.html">Online Reservation</a></li>
+            <li><a href="user-support.html">Customer Support</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="content">
+    <div class="uk-width-1-1 uk-panel ">
+        <div class="uk-width-9-10 uk-container-center ">
+            <div class="margin-medium-top">
+                <h2 class="uk-text-bold text-red uk-text-center uk-margin-bottom-remove back-red">Reservation Logs</h2>
+            </div>
+            <div class="uk-margin-top">
+                <div class="uk-width-1-1 uk-panel back-color uk-margin-top">
+                    <div class="uk-width-1-1 panel-thead ">
+                        <table class="uk-table">
+                            <thead>
+                            <tr class="uk-text-center">
+                                <td class="uk-width-2-10 "> DATE</td>
+                                <td class="uk-width-2-10 "> SERVICE TYPE</td>
+                                <td class="uk-width-4-10 "> COMMENTS</td>
+                                <td class="uk-width-2-10 "> STATUS</td>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div class="uk-width-1-1 branch-list uk-panel">
+                        <table class="uk-table">
+                            <tbody>
+                            <tr class=" " ng-repeat="data in reservations" ng-cloak>
+                                <td class="uk-width-2-10 uk-text-center"><h4>{{formatDate(data.get('date'))}}</h4></td>
+                                <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('type')}}</h4></td>
+                                <td class="uk-width-4-10 uk-text-center"><h5>{{data.get('comment')}}</h5></td>
+                                <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('status')}}</h4></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="uk-width-1-1 footer">
+        <ul class="uk-padding-remove uk-text-center ">
+            <li><a href="terms.html">Terms of use</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="about-us.html">About Us</a></li>
+            <li><a href="">Other Services Offered</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+        </ul>
+        <h4 class="uk-text-center">&copy; 2016 Uplink Digital Solutions Enterprise. All rights reserved.</h4>
+    </div>
+</div>
+
+<script src="admin/libs/angular-1.4.3.js"></script>
+<script src="admin/libs/parse-1.6.14.js"></script>
+<script src="assets/js/websitejs/logs.js"></script>
+<script src="assets/js/websitejs/floatingMenuDir.js"></script>
+
+</body>
+</html>

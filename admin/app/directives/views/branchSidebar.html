@@ -1,0 +1,27 @@
+<div id="offcanvas" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar uk-offcanvas-bar">
+        <a href=""><img src="assets/image/Uplink-Logo-White.png" width="200" alt="Cignal" class="uk-align-center uk-margin-large-bottom uk-margin-small-top"/></a>
+        <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:false}">
+            <li ng-class="{'uk-active': currentState == 'branch-home'}"><a ui-sref="branch-home"> HOME</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-inquire'}"><a ui-sref="branch-inquire"> INQUIRES</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-client'}"><a ui-sref="branch-client"> CLIENTS</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-online-transaction'}"><a ui-sref="branch-online-transaction"> ONLINE TRANSACTIONS</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-sms'}"><a ui-sref="branch-sms"> SMS NOTIFICATION</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-setting'}"><a ui-sref="branch-setting"> SETTINGS</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="mgnt-navigation-wrapper uk-height-viewport uk-hidden-small">
+    <a href=""><img src="assets/image/Uplink-Logo-White.png" alt="Cignal" class="uk-align-center uk-margin-large-bottom uk-margin-small-top"/></a>
+    <div class="uk-width-1-1 uk-panel mgnt-nav-menu">
+        <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="{multiple:false}">
+            <li ng-class="{'uk-active': currentState == 'branch-home'}"><a ui-sref="branch-home"> HOME</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-inquire'}"><a ui-sref="branch-inquire"> INQUIRES</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-client'}"><a ui-sref="branch-client"> CLIENTS</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-online-transaction'}"><a ui-sref="branch-online-transaction"> ONLINE TRANSACTIONS</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-sms'}"><a ui-sref="branch-sms"> SMS NOTIFICATION</a></li>
+            <li ng-class="{'uk-active': currentState == 'branch-setting'}"><a ui-sref="branch-setting"> SETTINGS</a></li>
+        </ul>
+    </div>
+</div>
