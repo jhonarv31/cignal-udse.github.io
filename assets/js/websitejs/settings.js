@@ -40,7 +40,7 @@ app.controller("customerServiceCtrl", function($scope) {
         if ($scope.data.newPassword && $scope.data.retypePassword)
             currentUser.set('password', $scope.data.newPassword);
 
-        currentUser.set('name', $scope.data.name);
+        currentUser.set('lastname', $scope.data.lastname);
         currentUser.set('firstname', $scope.data.firstname);
         currentUser.set('middlename', $scope.data.middlename);
         currentUser.set('contact', $scope.data.contact);
@@ -76,7 +76,7 @@ app.controller("customerServiceCtrl", function($scope) {
 
     function initialize() {
         $scope.data.username = currentUser.get('username');
-        $scope.data.name = currentUser.get('name');
+        $scope.data.lastname = currentUser.get('lastname');
         $scope.data.firstname = currentUser.get('firstname');
         $scope.data.middlename = currentUser.get('middlename');
         $scope.data.contact = currentUser.get('contact');

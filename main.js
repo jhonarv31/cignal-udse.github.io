@@ -45,7 +45,7 @@ Parse.Cloud.define('addNewInquire', function(req, res) {
         console.log('type is not INQUIRE')
 
         // check if name exists in client
-        getClientByName(data.name).first({
+        getClientByName(data.firstname, data.middlename, data.lastname).first({
             success: function(result) {
                 console.log('getClientByName done')
                 if (result) {
@@ -760,7 +760,9 @@ Parse.Cloud.define('addNewReservation', function(req, res) {
                                 // New client object
                                 var Client = Parse.Object.extend("Client");
                                 var client = new Client();
-                                client.set('name', userPointer.get('name'));
+                                client.set('lastname', userPointer.get('lastname'));
+                                client.set('firstname', userPointer.get('firstname'));
+                                client.set('middlename', userPointer.get('middlename'));
                                 client.set('email', userPointer.get('email'));
                                 client.set('contact', userPointer.get('contact'));
                                 client.set('address', userPointer.get('address'));
@@ -1085,10 +1087,19 @@ function getInquireByUserPointer(userPointer) {
     return query;
 }
 
-function getClientByName(name) {
+function getClientByName(firstname, middlename, lastname) {
     var classObject = Parse.Object.extend("Client");
-    var query = new Parse.Query(classObject);
-    query.matches("name", name, "i");
+
+    var queryFirstname = new Parse.Query(classObject);
+    queryFirstname.matches("firstname", firstname, "i");
+
+    var queryMiddlename = new Parse.Query(classObject);
+    queryMiddlename.matches("middlename", middlename, "i");
+
+    var queryLastname = new Parse.Query(classObject);
+    queryLastname.matches("lastname", lastname, "i");
+
+    var query = Parse.Query.or(queryFirstname, queryMiddlename, queryLastname);
     return query;
 }
 

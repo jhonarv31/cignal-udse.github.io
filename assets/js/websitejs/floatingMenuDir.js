@@ -58,7 +58,7 @@ app.controller("floatingMenuCtrl", function($scope) {
             user.signUp($scope.newData, {
                 success: function(user) {
                     Parse.User.logOut().then(function() {
-                        notification('Signup success! Please wait for your account approval.', 'success', 5000);
+                        notification('Signup success! Wait for your account approval and verify your email.', 'success', 5000);
                         $scope.loader.isSigningUp = false;
                         $scope.newData = {};
                         $scope.retypePassword = '';

@@ -112,7 +112,7 @@ function branchClientCtrl($scope, $timeout, $state, uikitService, customService,
 
         var data, filename, link;
         data = encodeURI(csvContent);
-        filename = $scope.selectedView.get('name') + '\'s transactions - ' + customService.dateFormat2(new Date());
+        filename = $scope.selectedView.get('firstname') + ' ' + $scope.selectedView.get('lastname') + '\'s transactions - ' + customService.dateFormat2(new Date());
 
         link = document.createElement('a');
         link.setAttribute('href', data);

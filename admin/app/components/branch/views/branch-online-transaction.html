@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                             <tr class=" " dir-paginate="data in preregistrations | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'preregistrationsPagination'">
-                                <td class="uk-width-2-10 uk-text-right"><h4>{{data.get('firstname') + ' ' + data.get('middlename') + ' ' + data.get('name')}}</h4></td>
+                                <td class="uk-width-2-10 uk-text-right"><h4>{{data.get('firstname') + ' ' + data.get('middlename') + ' ' + data.get('lastname')}}</h4></td>
                                 <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('email')}}</h4></td>
                                 <td class="uk-width-2-10 uk-text-center"><h4>{{'+639'+data.get('contact')}}</h4></td>
                                 <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('address')}}</h4></td>
@@ -64,7 +64,7 @@
                             </thead>
                             <tbody>
                             <tr class=" " dir-paginate="data in reservations | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'reservationsPagination'">
-                                <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('name')}}</h4></td>
+                                <td class="uk-width-2-10 uk-text-center"><h4>{{data.get('lastname')}}</h4></td>
                                 <!--<td class="uk-width-1-10 uk-text-center"><h4>+639{{data.get('userPointer').get('contact')}}</h4></td>-->
                                 <td class="uk-width-1-10 uk-text-center"><h4>+639{{data.get('contact')}}</h4></td>
                                 <!--<td class="uk-width-2-10 uk-text-center"><h4>Bulihan Silang Cavite</h4></td>-->
@@ -104,7 +104,7 @@
                             <tbody>
                             <tr class="uk-text-center " dir-paginate="data in customerservices | itemsPerPage: pageSize" current-page="currentPage" pagination-id="'customersupportsPagination'">
                                 <td class="uk-width-2-10">{{formatDate(data.createdAt)}}</td>
-                                <td class="uk-width-4-10">{{data.get('name')}}</td>
+                                <td class="uk-width-4-10">{{data.get('lastname')}}</td>
                                 <!--<td class="uk-width-2-10">{{data.get('contact')}}</td>-->
                                 <td class="uk-width-3-10"><a ng-click="setView(data)" class="uk-text-small" data-uk-modal="{target:'#viewcustomersupport'}">VIEW</a></td>
                                 <td class="uk-width-1-10"><a ng-click="setDelete(data)" data-uk-modal="{target:'#deletecustomersupport'}"><i class="uk-icon-trash-o uk-icon-small" data-uk-tooltip="{pos:'bottom-left'}" title="Delete"></i></a></td>
@@ -167,7 +167,7 @@
                 <div class="uk-width-1-1">
                     <div>
                         <label  class="uk-text-right">Full name:</label>
-                        <input value="{{selectedView.get('name')}}" type="text" class="uk-width-1-1 public-input text-italic uk-text-bold" disabled>
+                        <input value="{{selectedView.get('lastname')}}" type="text" class="uk-width-1-1 public-input text-italic uk-text-bold" disabled>
                     </div>
                     <!--<div>-->
                     <!--<label  class="uk-text-right">Contact number:</label>-->
