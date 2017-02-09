@@ -8,11 +8,11 @@
 
     <div class="uk-width-1-1">
         <div class="uk-panel ">
-            <div class="uk-grid-width-large-1-5 uk-grid-width-medium-1-2 uk-grid-width-small-1-1 uk-grid uk-grid-collapse uk-grid-small  dash"  data-uk-grid-margin="">
+            <div class="uk-grid-width-large-1-5 uk-grid-width-medium-1-2 uk-grid-width-small-1-1 uk-grid uk-grid-collapse uk-grid-small "  data-uk-grid-margin="">
 
                 <!--START BRANCHES TEMPLATE-->
-                <div ng-repeat="data in branches">
-                    <div class="uk-panel uk-panel-box ">
+                <div ng-repeat="data in branches ">
+                    <div class="uk-panel uk-panel-box dash">
                         <h3 class="uk-panel-title uk-margin-bottom-remove dropdown"data-uk-dropdown="{mode:'click'}" >{{data.get('name')}}
                             <span class="uk-align-right" ><button class="uk-icon-gear gear uk-icon-small"></button></span>
                             <div class="uk-dropdown drop">
@@ -27,7 +27,7 @@
                         <h4 class=" uk-margin-top-remove text-black"><span>user: </span> {{data.get('firstname')+ ' ' +data.get('lastname')}}</h4>
                         <h5 class=" uk-margin-top-remove text-black"><span>location: </span> {{data.get('location')}}</h5>
                         <div class="">
-                            <button ng-click="setEvaluate(data)" class="button button-green uk-align-center uk-width-8-10" data-uk-modal="{target:'#evaluate'}">EVALUATE</button>
+                            <button ng-click="setEvaluate(data)" class="button button-green uk-align-center uk-position-bottom uk-width-8-10" data-uk-modal="{target:'#evaluate'}">EVALUATE</button>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,29 @@
         </div>
     </div>
 </div>
-
+<div id="evaluate" class="uk-modal" role="form">
+    <div class="uk-modal-dialog">
+        <a class="uk-modal-close uk-close"></a>
+        <h2 class=" uk-text-center uk-text-bold" > Evaluation</h2>
+        <div class="uk-width-9-10 uk-align-center ">
+            <div class=" uk-align-center ">
+                <h3 class=" uk-text-center"> Branch overview for the month: </h3>
+                <h4> Clients: <span>#number</span></h4>
+                <h4> Service Transactions: <span>#number</span></h4>
+                <!-- If the branch didn't reach the minimum qouta = 50 service transactions
+                     Eto yung lalabas sa <p>
+                    *This branch needs to improve their performance level to get more clients but since this branch has #inquires inquiries this branch can still have a potential client. Just convince them.
+                -->
+                <!-- If the branch reached the minimum qouta = 50 service transactions
+                    Eto yung lalabas sa <p>
+                    *This branch reached the monthly qouta. They deserve something. Keep them feel happy Boss! :)
+                -->
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam, commodi et natus nihil quod reiciendis ut. Labore, necessitatibus veritatis.</p>
+            </div>
+            <button class="uk-align-center button button-green uk-modal-close uk-width-3-10" >Okay</button>
+        </div>
+    </div>
+</div>
 
 
 <script src="assets/uikit-2.24.2/js/uikit.min.js"></script>

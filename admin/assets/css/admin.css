@@ -288,6 +288,12 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
 }
 /*RESPONSIVE*/
 @media (min-width: 320px) {
+    .dash{
+        background-color: #ffffff !important;
+        border-color: #11555f;
+        height: 150px;
+        padding: 20px;
+    }
     .content{
         box-sizing: border-box;
         background-color:  #ffffff;
@@ -297,6 +303,12 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     }
 }
 @media (min-width: 768px) {
+    .dash{
+        background-color: #ffffff !important;
+        border-color: #11555f;
+        height: 170px;
+        padding: 20px;
+    }
     .content{
         box-sizing: border-box;
         background-color:  #ffffff;
@@ -304,6 +316,12 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     }
 }
 @media (min-width: 1366px) {
+    .dash{
+        background-color: #ffffff !important;
+        border-color: #11555f;
+        height: 210px;
+        padding: 20px;
+    }
     .content{
         box-sizing: border-box;
         background-color:  #ffffff;
