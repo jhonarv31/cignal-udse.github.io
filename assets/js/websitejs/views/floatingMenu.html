@@ -94,12 +94,12 @@
             <div class="uk-width-9-10 uk-width-large-7-10 uk-width-medium-7-10 uk-container-center">
                 <img src="assets/image/Cignal_Logo.png" alt="Cignal" width="180" class="uk-align-center uk-margin-bottom"/>
                 <h2 class="text-darkblue uk-text-center uk-text-bold">Forgot Password</h2>
-                <form ng-submit="login()" class="uk-width-1-1 uk-margin-bottom">
+                <form ng-submit="forgotPassword()" class="uk-width-1-1 uk-margin-bottom">
                     <label class="uk-text-bold">Email:
-                        <input ng-model="user.username" ng-disabled="loader.isLoggingIn" type="text" required class="uk-width-1-1 uk-text-bold" /></label>
-                    <button ng-disabled="loader.isLoggingIn" type="submit" class="uk-align-center button-green uk-margin-top" id="">
-                        <span ng-if="!loader.isLoggingIn">Send</span>
-                        <span ng-if="loader.isLoggingIn"><i class="uk-icon-spin uk-icon-spinner"></i></span>
+                        <input ng-model="forgotEmail" ng-disabled="loader.isForgotPassword" type="text" required class="uk-width-1-1 uk-text-bold" /></label>
+                    <button ng-disabled="loader.isForgotPassword" type="submit" class="uk-align-center button-green uk-margin-top" id="">
+                        <span ng-if="!loader.isForgotPassword">Send</span>
+                        <span ng-if="loader.isForgotPassword"><i class="uk-icon-spin uk-icon-spinner"></i></span>
                     </button>
                 </form>
                 <h5 class="uk-text-center text-gray">Don't have an account? <span><a href="#signup" data-uk-modal="{center:true}" class="text-green uk-text-bold">Sign up</a></span></h5>
