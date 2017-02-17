@@ -44,17 +44,18 @@
         <div class="uk-width-9-10 uk-align-center ">
             <div class=" uk-align-center ">
                 <h3 class=" uk-text-center"> Branch overview for the month: </h3>
-                <h4> Clients: <span>#number</span></h4>
-                <h4> Service Transactions: <span>#number</span></h4>
-                <!-- If the branch didn't reach the minimum qouta = 50 service transactions
-                     Eto yung lalabas sa <p>
-                    *This branch needs to improve their performance level to get more clients but since this branch has #inquires inquiries this branch can still have a potential client. Just convince them.
-                -->
-                <!-- If the branch reached the minimum qouta = 50 service transactions
-                    Eto yung lalabas sa <p>
-                    *This branch reached the monthly qouta. They deserve something. Keep them feel happy Boss! :)
-                -->
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aperiam, commodi et natus nihil quod reiciendis ut. Labore, necessitatibus veritatis.</p>
+                <h4> Clients: 
+                    <span ng-if="loader.isLoadingData">Loading clients total...</span>
+                    <span ng-if="!loader.isLoadingData">{{count.clients}}</span>
+                </h4>
+                <h4> Service Transactions: 
+                    <span ng-if="loader.isLoadingData">Loading transactions total...</span>
+                    <span ng-if="!loader.isLoadingData">{{count.transactions}}</span>
+                </h4>
+                
+                <p ng-if="count.transactions < 50 && !loader.isLoadingData">This branch needs to improve their performance level to get more clients but since this branch has {{count.inquires}} inquiries this branch can still have a potential client. Just convince them.</p>
+                
+                <p ng-if="count.transactions >= 50 && !loader.isLoadingData">This branch reached the monthly qouta. They deserve something. Keep them feel happy Boss! :)</p>
             </div>
             <button class="uk-align-center button button-green uk-modal-close uk-width-3-10" >Okay</button>
         </div>
