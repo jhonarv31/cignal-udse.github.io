@@ -96,7 +96,7 @@
                 <h2 class="text-darkblue uk-text-center uk-text-bold">Forgot Password</h2>
                 <form ng-submit="forgotPassword()" class="uk-width-1-1 uk-margin-bottom">
                     <label class="uk-text-bold">Email:
-                        <input ng-model="forgotEmail" ng-disabled="loader.isForgotPassword" type="text" required class="uk-width-1-1 uk-text-bold" /></label>
+                        <input ng-model="forgotEmail" ng-disabled="loader.isForgotPassword" type="email" required class="uk-width-1-1 uk-text-bold" /></label>
                     <button ng-disabled="loader.isForgotPassword" type="submit" class="uk-align-center button-green uk-margin-top" id="">
                         <span ng-if="!loader.isForgotPassword">Send</span>
                         <span ng-if="loader.isForgotPassword"><i class="uk-icon-spin uk-icon-spinner"></i></span>
