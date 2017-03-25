@@ -1,23 +1,30 @@
-<div class="uk-width-1-1 uk-height-viewport uk-flex uk-flex-middle login-bg">
-    <div class="uk-width-large-3-10 uk-width-medium-1-2 uk-width-small-7-10 back-white uk-align-center">
-        <div class="uk-container uk-container-center" role="form">
-            <div class="uk-width-1-1 uk-panel uk-align-center">
-                <img src="assets/image/Uplink-Logo-Black.png" alt="Uplink" class="uk-margin-top uk-width-8-10 uk-align-center "/>
+<div class="bg-red-op uk-hidden-medium uk-hidden-small">
+    <img src="assets/image/Uplink-Logo-White-m.png" alt="Uplink" class="uk-margin-top-small uk-width-3-10 uk-align-left "/>
+</div>
+<div class="uk-width-1-1 uk-height-viewport uk-flex uk-flex-middle login-bg uk-margin-top-remove">
+    <div class="uk-width-large-3-10 uk-width-medium-1-2 uk-width-small-8-10 back-white uk-align-center">
+        <div class=" uk-container-center box-log">
+            <div class="back-black uk-margin-bottom-remove">
+                <h3 class="text-white"><span class="uk-icon-user text-white uk-margin-left uk-margin-right"></span>Sign in to UDSE</h3>
+            </div>
+            <div class="uk-width-9-10 uk-align-center" role="form">
                 <form class="uk-container-center" ng-submit="login()">
-                    <div class="uk-form-icon uk-width-1-1 uk-margin-bottom ">
+                    <h5 class="uk-text-left uk-text-bold uk-margin-bottom-remove uk-margin-large-top">EMAIL</h5>
+                    <div class="uk-form-icon uk-width-1-1 ">
                         <i class="text-gray uk-icon uk-icon-user"></i>
-                        <input ng-model="user.username" ng-disabled="loader.isLoggingIn" type="text" required class="uk-width-1-1 " placeholder="Login ID"/>
+                        <input ng-model="user.username" ng-disabled="loader.isLoggingIn" type="text" required class="uk-width-1-1 " placeholder="username"/>
                     </div>
+                    <h5 class="uk-text-left uk-text-bold uk-margin-bottom-remove">PASSWORD</h5>
                     <div class="uk-form-icon uk-width-1-1 uk-margin-bottom ">
                         <i class="text-gray uk-icon uk-icon-lock "></i>
                         <input ng-model="user.password" ng-disabled="loader.isLoggingIn" type="password" required class="uk-width-1-1 " placeholder="Password"/>
                     </div>
                     <div class="uk-grid uk-grid-collapse  uk-grid-width-1-2 uk-margin-bottom">
                         <div class="uk-flex uk-flex-middle uk-align ">
-                            <h5><input ng-model="keepMeLoggedIn" ng-disabled="loader.isLoggingIn" ng-change="checkboxChanged()" type="checkbox"> Remember me</h5>
+                            <h5 class=""><input ng-model="keepMeLoggedIn" ng-disabled="loader.isLoggingIn" ng-change="checkboxChanged()" type="checkbox"> Remember me</h5>
                         </div>
-                        <div class="">
-                            <button ng-disabled="loader.isLoggingIn" id="login" type="submit" class="login-button button-green  uk-align-right">
+                        <div class="uk-margin-top">
+                            <button ng-disabled="loader.isLoggingIn" id="login" type="submit" class="login-button button-red  uk-align-right">
                                 <span ng-if="loader.isLoggingIn"><i class="uk-icon-spin uk-icon-spinner"></i></span>
                                 <span class="text-white" ng-if="!loader.isLoggingIn">LOGIN</span>
                             </button>

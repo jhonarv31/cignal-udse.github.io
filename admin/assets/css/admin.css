@@ -25,6 +25,14 @@ html,body,div,h1,h2,h3,h4,h5,h6,a,p,input,textarea,label,li,select,option{
 .back-white{
     background-color: #fff!important;
 }
+.back-black{
+    padding-top: 15px!important;
+    padding-bottom: 1px!important;
+    background-color: #424242;
+}
+.bg-red-op{
+    position: fixed;
+}
 /*BUTTONS*/
 button, .uk-button {
     width: 175px;
@@ -34,9 +42,9 @@ button, .uk-button {
     color: #fff;
     border: 1px;
     outline: none;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     font-weight: bold;
     text-shadow: none;
 }
@@ -50,7 +58,7 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     color: #ffffff;
 }
 .button-green{
-    background-color: #0f9b7e;
+    background-color: #0e9277;
 }
 .button-red{
     background-color: #9b2d18;
@@ -229,6 +237,7 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     border: none!important;
 }
 /*LOGIN USER*/
+
 *[role="login"] .logo {
     background-color: #eb2b25;
     width: 150px;
@@ -259,26 +268,31 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     border: none;
     resize: none;
 }
-*[role="form"] div {
-    border-radius: 15px;
-    padding-top: 10px ;
-}
+
 *[role="form"] input {
-    border-radius: 5px;
-    border: 1px solid #000000;
+    border-radius: 100px;
+    border: 1px solid #cacaca;
     background-color: #ffffff;
     padding: 12px;
     outline: none;
     resize: none;
     font-size: 16px;
 }
+.box-log{
+    border: 1px solid #cacaca;
+    background-color: #f1f1f1;
+}
+.logo-g{
+    background-color: #ffffff;
+}
 .login-bg{
-    background-color: rgb(1, 19, 24) !important;
+    background-color: #FFFFFF!important;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+
 /*MODALS*/
 .admnreq{
     background-color: #ececec;
@@ -300,6 +314,7 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     }
     .login-button{
         width: 80%;
+        border-radius: 100px;
     }
 }
 @media (min-width: 768px) {
