@@ -280,6 +280,9 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
 .box-log{
     border: 1px solid #cacaca;
     background-color: #f1f1f1;
+    -webkit-box-shadow: 10px 10px 21px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 21px -1px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 21px -1px rgba(0,0,0,0.75);
 }
 .logo-g{
     background-color: #ffffff;
