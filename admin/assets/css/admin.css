@@ -92,7 +92,7 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     top: 0;
     left: 0;
     width: 270px;
-    background-color: rgba(0, 6, 13, 0.95);
+    background-color: rgba(51, 51, 51, 0.95);
     box-sizing: border-box;
     padding: 20px 0;
     /*text-transform: uppercase;*/
@@ -150,7 +150,7 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
 /*NAVIGATION*/
 .mgnt-navigation-menu {
     height: 50px;
-    background-color: #000000 !important;
+    background-color: #961004 !important;
     margin: 0 1px;
 }
 .mgnt-navigation-menu ul{
@@ -172,7 +172,6 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     width: 110px;
     background: rgba(13,62,69,0.68);
     background: -moz-linear-gradient(left, rgba(13,62,69,0.68) 0%, rgba(13,62,69,0.68) 47%, rgba(13,62,69,0.68) 61%, rgba(13,62,69,0.68) 90%, rgba(13,62,69,0.68) 98%, rgba(13,62,69,0.66) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(13,62,69,0.68)), color-stop(47%, rgba(13,62,69,0.68)), color-stop(61%, rgba(13,62,69,0.68)), color-stop(90%, rgba(13,62,69,0.68)), color-stop(98%, rgba(13,62,69,0.68)), color-stop(100%, rgba(13,62,69,0.66)));
     background: -webkit-linear-gradient(left, rgba(13,62,69,0.68) 0%, rgba(13,62,69,0.68) 47%, rgba(13,62,69,0.68) 61%, rgba(13,62,69,0.68) 90%, rgba(13,62,69,0.68) 98%, rgba(13,62,69,0.66) 100%);
     background: -o-linear-gradient(left, rgba(13,62,69,0.68) 0%, rgba(13,62,69,0.68) 47%, rgba(13,62,69,0.68) 61%, rgba(13,62,69,0.68) 90%, rgba(13,62,69,0.68) 98%, rgba(13,62,69,0.66) 100%);
     background: -ms-linear-gradient(left, rgba(13,62,69,0.68) 0%, rgba(13,62,69,0.68) 47%, rgba(13,62,69,0.68) 61%, rgba(13,62,69,0.68) 90%, rgba(13,62,69,0.68) 98%, rgba(13,62,69,0.66) 100%);
