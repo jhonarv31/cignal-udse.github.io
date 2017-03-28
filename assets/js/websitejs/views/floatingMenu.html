@@ -156,7 +156,7 @@
                                     <label class="uk-text-bold">Branch Location:
                                         <select ng-model="newData.branchPointer" ng-disabled="loader.isSigningUp"  required class="public-select uk-margin-bottom">
                                             <option value="" disabled selected>--SELECT--</option>
-                                            <option ng-repeat="data in branches" value="{{data.id}}"> {{data.get('location')}}</option>
+                                            <option ng-repeat="data in branches" value="{{data.id}}"> {{data.get('name')}}</option>
                                         </select></label>
                                 </div>
 
