@@ -16,6 +16,20 @@
                     <div class="uk-margin-top ">
                         <div class="uk-width-large-6-10 uk-width-medium-8-10 uk-width-small-1-1 uk-align-center " >
                             <form ng-submit="submit()" class="uk-width-1-1  uk-margin-bottom">
+                                <div class="uk-width-1-1">
+                                    <div>
+                                        <label class="uk-text-bold">Notification Type:
+                                            <select id="select-notif" class="public-select uk-margin-bottom">
+                                                <option value="" disabled selected>--SELECT--</option>
+                                                <option value="Online Account Approval">Online Account Approval</option>
+                                                <option value="Process Pending">Process Pending</option>
+                                                <option value="Application On-Process">Application On-Process</option>
+                                                <option value="Application Approve">Application Approved</option>
+                                                <option value="Application Disapproved">Application Disapproved</option>
+                                            </select></label>
+                                        <button data-uk-modal="{target:'#printpreview'}" id="print" class="button button-green uk-hidden"><a class="uk-icon-print uk-icon-small"></a> print</button>
+                                    </div>
+                                </div>
                                 <label class="uk-text-bold">Number:
                                     <div class="uk-width-1-1 uk-grid uk-grid-collapse uk-grid-small  uk-align-center" role="setting" >
                                         <input ng-model="newData.to" ng-keypress="myKeypress($event)" ng-disabled="loader.isSubmitting" ng-change="numberChange()" required class="uk-text-bold uk-align-center uk-width-1-1" maxlength="13">
@@ -23,12 +37,12 @@
                                 </label>
                                 <div class="uk-grid uk-grid-collapse uk-grid-width-1-2">
                                     <label class="uk-text-bold uk-margin-right">Message:
-                                        <textarea required ng-model="newData.body" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea"> </textarea></label>
+                                        <textarea required ng-model="newData.body" id="smsBody" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea"> </textarea></label>
                                     <div class="uk-grid uk-grid-width-2-1">
                                         <label class="uk-text-bold">Sender:
-                                            <textarea required ng-model="newData.sender" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea-sub"> </textarea></label>
+                                            <textarea required ng-model="newData.sender" id="smsSender" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea-sub"> </textarea></label>
                                         <label class="uk-text-bold">Contact numbers:
-                                            <textarea required ng-model="newData.contact" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea-sub"> </textarea></label>
+                                            <textarea required ng-model="newData.contact" id="smsContact" ng-disabled="loader.isSubmitting" class="uk-width-1-1 uk-text-bold uk-margin-bottom textarea-sub"> </textarea></label>
                                     </div>
                                 </div>
 

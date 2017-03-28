@@ -18,7 +18,7 @@ app.controller("reservationCtrl", function($scope, vcRecaptchaService) {
     $scope.selectedCheckbox = [];
     $scope.othersTxt = '';
     var isRecaptchaSuccess;
-    var checkboxData = ['INSTALL/NEW ACCOUNT', 'ADD BOX', 'RELOCATION', 'REPAIR','OTHERS'];
+    var checkboxData = ['INSTALL', 'ADD BOX', 'RELOCATION', 'REPAIR','OTHERS'];
 
     if (Parse.User.current()) {
         $scope.newData2.name = Parse.User.current().get('firstname') + ' ' + Parse.User.current().get('lastname');
