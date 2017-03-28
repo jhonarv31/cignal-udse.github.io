@@ -376,6 +376,9 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
     }
 }
 @media print {
+    #printBtn{
+        display :  none;
+    }
     body {
         -webkit-print-color-adjust: exact;
     }
