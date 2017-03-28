@@ -328,6 +328,31 @@ button:hover, button:active, .uk-button:hover, .uk-button:active {
         padding: 0;
     }
 }
+@media (min-width: 375px) {
+    .content{
+        box-sizing: border-box;
+        background-color:  #ffffff;
+    }
+    .support-message{
+        resize: none;
+        height: 300px!important;
+        width: 400px;
+    }
+    .contact-no>span {
+        display: block;
+        position: absolute;
+
+        right: 225px;
+        margin-top: -25px;
+        line-height: 13px;
+        max-font-size: 16px;
+        min-font-size: 14px;
+        font-weight: bold;
+    }
+    .hero{
+        padding: 0;
+    }
+}
 @media (min-width: 768px) {
     .content{
         box-sizing: border-box;

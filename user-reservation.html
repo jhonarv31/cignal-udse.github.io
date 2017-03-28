@@ -58,11 +58,11 @@
     <div class="uk-width-1-1 uk-panel ">
         <div class="uk-container uk-container-center ">
             <h2 class="uk-margin-top uk-text-bold text-red uk-text-center back-red ">ONLINE RESERVATION</h2>
-            <div class="uk-margin-top">
-                <h3 class="uk-text-bold uk-text-left text-black uk-text-center uk-margin-bottom-remove ">Type of service: </h3>
-                <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-5 uk-grid-width-medium-1-3 uk-grid-width-small-1-1">
+            <div class="uk-margin-top uk-panel-box">
+                <h3 class="uk-text-bold text-black uk-text-center uk-margin-bottom ">Type of service </h3>
+                <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-5 uk-grid-width-medium-1-3 uk-grid-width-small-1-1 uk-text-left-small uk-text-center">
                     <div>
-                        <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(0) > -1" ng-click="toggleCheckbox(0)" ng-disabled="loader.isSubmitting"> INSTALL/NEW ACCOUNT</label>
+                        <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(0) > -1" ng-click="toggleCheckbox(0)" ng-disabled="loader.isSubmitting"> INSTALL</label>
                     </div>
                     <div>
                         <label class="uk-text-bold uk-text-medium"><input type="checkbox" ng-checked="selectedCheckbox.indexOf(1) > -1" ng-click="toggleCheckbox(1)" ng-disabled="loader.isSubmitting"> ADD BOX</label>
@@ -79,51 +79,48 @@
                     </div>
                 </form>
             </div>
-            <div class="uk-margin-top uk-width-9-10 uk-align-center" role="reservation">
-                <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-2 uk-grid-width-medium-1-1 uk-grid-width-small-1-1">
-                    <div>
-                        <label class="uk-text-bold">Requested by:
-                        <input ng-model="newData2.name" disabled required type="text"></label>
-                    </div>
-                    <div>
-                        <label class="uk-text-bold">Date of service:
-                        <input ng-model="newData2.date" ng-disabled="loader.isSubmitting" required type="date" class=" " min='2017-02-13'></label>
-                    </div>
-                </form>
+            <div class="uk-margin-top uk-width-1-1 uk-panel-box" role="reservation">
+                <h3 class="uk-text-bold text-black uk-text-center uk-margin-bottom ">Required Information </h3>
+                <div class="uk-grid uk-grid-collapse uk-grid-width-large-1-2 uk-grid-width-medium-1-1 uk-grid-width-small-1-1">
+                    <form class="uk-form uk-width-large-1-2 uk-width-medium-1-1 uk-width-small-1-1">
+                        <div class="uk-text-bold uk-margin">
+                            REQUESTED BY:<br/>
+                                <input ng-model="newData2.name" class="uk-width-1-1" disabled required type="text">
+                        </div>
+                        <div class="uk-text-bold uk-margin">
+                            PLAN (IF APPLICABLE)<br/>
+                                <input ng-model="newData2.plan" class="uk-width-1-1" ng-disabled="loader.isSubmitting" required type="text">
+                        </div>
+                        <div class="uk-text-bold uk-margin">
+                            DATE OF SERVICE:<br/>
+                                <input ng-model="newData2.date" class="uk-width-1-1"class="uk-width-1-1" ng-disabled="loader.isSubmitting" required type="date">
+                        </div>
+                        <div class="uk-text-bold uk-margin">
+                            ADDRESS:<br/>
+                                <input ng-model="newData2.address" class="uk-width-1-1" ng-disabled="loader.isSubmitting" required type="text">
+                        </div>
+                        <div class="uk-text-bold uk-margin">
+                            CONTACT NO:<br/>
+                                <input ng-model="newData2.contact" class="uk-width-1-1" ng-disabled="loader.isSubmitting" required type="text"  maxlength="11" onkeypress="return isNumberKey(event)">
+                        </div>
+                    </form>
 
-                <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-2 uk-grid-width-medium-1-1 uk-grid-width-small-1-1">
-                    <div>
-                        <label class="uk-text-bold">Complete Address:
-                        <input ng-model="newData2.address" ng-disabled="loader.isSubmitting" required type="text"> </label>
-                    </div>
-                    <div>
-                        <label class="uk-text-bold">Contact No:
-                        <input ng-model="newData2.contact" ng-disabled="loader.isSubmitting" required type="text" class="input-padding" maxlength="9" onkeypress="return isNumberKey(event)"><span>+639</span></label>
-                    </div>
-                </form>
+                    <form class="uk-form  uk-width-large-1-2 uk-width-medium-1-1 uk-width-small-1-1">
+                        <div class="uk-text-bold uk-margin">
+                            Tel. No:(optional)<br/>
+                                <input ng-model="newData2.tel" ng-disabled="loader.isSubmitting" type="text" class="uk-width-1-1" required>
+                        </div>
+                        <div class="uk-text-bold uk-margin">
+                            Any message/comments:<br/>
+                                <textarea ng-model="newData2.comment" ng-disabled="loader.isSubmitting" class="message-area"></textarea>
+                        </div>
+                        <div class="uk-margin-top uk-text-bold uk-margin uk-width-7-10" vc-recaptcha key="'6LeEgxMUAAAAAAxwXCnSnRqROwKfCurotZuTuChe'" on-success="recaptchaResponse(response)">
+                        </div>
+                    </form>
+                </div>
 
-                <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-2 uk-grid-width-medium-1-1 uk-grid-width-small-1-1">
-                    <div>
-                        <label class="uk-text-bold">Plan:(if available)
-                        <input ng-model="newData2.plan" ng-disabled="loader.isSubmitting" required type="text"></label>
-                    </div>
-                    <div>
-                        <label class="uk-text-bold">Tel. No:(optional)
-                        <input ng-model="newData2.tel" ng-disabled="loader.isSubmitting" type="text" required class=""></label>
-                    </div>
-                </form>
             </div>
-            <div class="uk-margin-top uk-width-9-10 uk-align-center">
-                <form class="uk-form uk-margin uk-grid uk-grid-large uk-grid-collapse uk-grid-width-large-1-2 uk-grid-width-medium-1-1 uk-grid-width-small-1-1">
-                    <div>
-                        <label class="uk-text-bold">Any message/comments:
-                            <textarea ng-model="newData2.comment" ng-disabled="loader.isSubmitting" class="message-area"></textarea></label>
-                    </div>
-                    <center><div class="uk-margin-top" vc-recaptcha key="'6LeEgxMUAAAAAAxwXCnSnRqROwKfCurotZuTuChe'"
-                                 on-success="recaptchaResponse(response)">
-                    </div></center>
-                </form>
-            </div>
+
         </div>
         <button ng-disabled="loader.isSubmitting" ng-click="submitReservation()" class="submit-button button-green uk-align-center uk-margin-top">
             <span ng-if="!loader.isSubmitting"><i class="uk-icon-send-o"> </i> SUBMIT</span>
